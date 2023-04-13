@@ -1,0 +1,79 @@
+.ServersBar {
+  width: 100%;
+  height: 90px;
+  background-color: var(--background1);
+}
+.Content {
+  display: flex;
+  height: calc(100vh - 90px);
+}
+.Content > .ChannelsBar {
+  background-color: var(--background3);
+  width: 600px;
+  border-top-left-radius: 15px;
+}
+.Content > .ChannelsBar > .ServerQuickInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  background-color: var(--background3);
+  border-top-left-radius: 15px;
+  color: white;
+}
+.Content > .ChannelsBar > .ServerBanner {
+  width: 100%;
+  height: 200px;
+  background-image: url(https://i.pinimg.com/originals/fd/91/13/fd91131ea693096d6be5e8aa99d18f9e.jpg);
+  background-size: cover;
+}
+.Content > .ContentBar {
+  background-color: var(--background2);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Content > .ContentBar > .ChannelQuickInfo {
+  height: 90px;
+  width: 100%;
+  background-color: var(--background4);
+  box-shadow: 0px 12px 22px -15px rgb(42, 42, 42);
+}
+.Content > .MembersBar {
+  background-color: var(--background3);
+  width: 500px;
+  border-top-right-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.roleGroup {
+  width: 85%;
+  padding: 10px;
+  background: linear-gradient(90deg, rgba(84,68,78,1) 0%, rgba(62,65,74,1) 100%);
+  border-radius: 5px;
+  color: white;
+  margin: 15px;
+}
+
+.messageContainer {
+  width: 90%;
+  min-height: 80px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+.messageContainer:hover {
+  background-color: var(--background3);
+  transition: background-color 0.2s;
+}
+.avatar-rounded {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}

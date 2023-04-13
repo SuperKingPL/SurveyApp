@@ -1,0 +1,9 @@
+const Message = () => {
+    return (
+        <div className="messageContainer">
+            <img className="avatar-rounded" src="https://i.pinimg.com/564x/0a/76/0c/0a760c24f7b1c21dcd965c9bc2cdd334.jpg"/>
+        </div>
+    )
+}
+
+export default Message
