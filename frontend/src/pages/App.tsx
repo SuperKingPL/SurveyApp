@@ -18,6 +18,7 @@ function App() {
         <div className="ContentBar">
           <div className="ChannelQuickInfo"></div>
           <Message/>
+          <Message/>
         </div>
         <div className="MembersBar">
           <RoleGroup/>

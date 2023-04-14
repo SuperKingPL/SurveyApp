@@ -59,10 +59,11 @@
 }
 
 .messageContainer {
-  width: 90%;
-  min-height: 80px;
-  margin: 10px;
+  overflow: hidden;
+  width: 95%;
   padding: 10px;
+  margin: 3px;
+  min-height: 80px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -72,8 +73,26 @@
   background-color: var(--background3);
   transition: background-color 0.2s;
 }
+.messageContainer > .messageContent {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+}
+.messageContainer > .messageContent > .messageAuthor {
+  color: white;
+  font-size: 20px;
+  margin: 2px;
+}
+.messageContainer > .messageContent > .messageText {
+  color: rgb(240, 240, 240);
+  margin: 2px;
+}
 .avatar-rounded {
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  min-width: 60px;
+  min-height: 60px;
+  max-width: 60px;
+  max-height: 60px;
 }
