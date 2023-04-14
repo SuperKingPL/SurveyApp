@@ -1,6 +1,10 @@
-const RoleGroup = () => {
+interface roleGroupProps {
+    name: string
+}
+
+const RoleGroup = (props: roleGroupProps) => {
     return (
-        <div className="roleGroup">Role group</div>
+        <div className="roleGroup">{props.name}</div>
     )
 }
 
