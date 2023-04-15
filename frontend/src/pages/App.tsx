@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/App.css';
 import '../styles/theme.css'
 import Message from '../components/message';
@@ -6,24 +5,26 @@ import RoleGroup from '../components/rolegroup';
 import {Channel, channelType} from '../components/channel';
 import ServerBadge from '../components/serverBadge';
 import SkeletonPlaceholder from '../components/skeleton';
-import { Button, Popover } from '@mui/material';
 import User from '../components/user';
-import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 import TextInput from '../components/textInput';
 import SelfUserInfo from '../components/selfUserInfo';
+import ServerThumbnail from '../components/serverThumbnail';
 
 function App() {
   return (
-    <div>
-      <div className="ServersBar"></div>
+    <div className='appMount'>
+      <div className="ServersBar">
+        <ServerThumbnail isHome={true}/>
+        <ServerThumbnail iconUrl='https://i.pinimg.com/originals/f3/a6/e5/f3a6e57461a25a3e3031349e8a217f51.jpg'/>
+        <ServerThumbnail isDashboard={true}/>
+      </div>
       <div className="Content">
         <div className="ChannelsBar">
           <div className="Mount1">
             <div className="ServerQuickInfo">
-              <ServerBadge/>Discord Official Server
+              <ServerBadge/>Survey Support
             </div>
-            <div className="ServerBanner"></div>
-            {/* <Popover id="create-channel-popover" open={}></Popover> */}
+            <div className="ServerBanner"/>
 
             <Channel name='chat' emoji='😊' type={channelType.text}/>
             <Channel name='media' emoji='📷' type={channelType.text}/>
@@ -36,8 +37,8 @@ function App() {
           <div className="ChannelQuickInfo">
             #Channel;
           </div>
-          <Message author='Test user #1' content='Lubisz jamniki?'/>
-          <Message author='Test user #2' content='nie'/>
+          <Message author='Michał Kwiatkowski' content='Lubisz jamniki?'/>
+          <Message author='Qx' content='nie'/>
           <SkeletonPlaceholder/>
           <TextInput/>
         </div>
