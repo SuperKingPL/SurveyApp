@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;400;500;600;700&display=swap');
-
+body {background-color: var(--background1);}
 .ServersBar {
   width: 100%;
   height: 90px;
@@ -17,7 +17,18 @@
   width: 600px;
   border-top-left-radius: 15px;
 }
-.Content > .ChannelsBar > .ServerQuickInfo {
+.ChannelsBar > .Mount1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ChannelsBar > .Mount2 {
+  width: 100%;
+  height: 90px;
+}
+.Content > .ChannelsBar > .Mount1 > .ServerQuickInfo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,9 +38,9 @@
   border-top-left-radius: 15px;
   color: white;
 }
-.Content > .ChannelsBar > .ServerBanner {
+.Content > .ChannelsBar > .Mount1 > .ServerBanner {
   width: 100%;
-  height: 200px;
+  height: 130px;
   background-image: url(https://i.pinimg.com/originals/fd/91/13/fd91131ea693096d6be5e8aa99d18f9e.jpg);
   background-size: cover;
   margin-bottom: 10px;
@@ -46,6 +57,10 @@
   width: 100%;
   background-color: var(--background4);
   box-shadow: 0px 12px 22px -15px rgb(42, 42, 42);
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 30px;
 }
 .Content > .MembersBar {
   background-color: var(--background3);
@@ -181,4 +196,53 @@ button:hover {
 .userWrapperContainer:hover {
   background-color: var(--background2);
   transition: background-color 0.2s;
+}
+.textInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: 10px;
+  width: calc(100% - 25px);
+  height: 60px;
+  border-radius: 7px;
+  background-color: var(--background5);
+}
+.textInput > input {
+  font-size: 15px;
+  float: right;
+  border: none;
+  outline: none;
+  height: 100%;
+  width: calc(100% - 140px);
+  background-color: var(--background5);
+  color: white;
+  padding: 20px;
+}
+.selfUserInfo {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 20px);
+  background-color: var(--background1);
+  height: 60px;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+}
+.selfUserInfo > .user {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+}
+.interactableIcon {
+  margin: 3px;
+  transition: filter 0.2s;
+}
+.interactableIcon:hover {
+  cursor: pointer;
+  filter: brightness(120%);
+  transition: filter 0.2s;
 }

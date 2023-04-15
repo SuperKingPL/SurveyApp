@@ -1,12 +1,13 @@
 interface userProps {
     name: string,
-    customStatus: string
+    customStatus: string,
+    avatar: string
 }
 
 const User = (props: userProps) => {
     return (
         <div className="userWrapperContainer">
-            <div className="userAvatar" style={{width: 45, height: 45, minWidth: 45, maxWidth: 45, minHeight: 45, maxHeight: 45, backgroundImage: "url(https://image.api.playstation.com/cdn/EP1464/CUSA07669_00/jBeiHA5Cmkwq4OV4Pz9dkTKmiVC4WTB1.png?w=440&thumb=false)"}}></div>
+            <div className="userAvatar" style={{width: 45, height: 45, minWidth: 45, maxWidth: 45, minHeight: 45, maxHeight: 45, backgroundImage: `url(${props.avatar})`}}></div>
                 <div className="userStatus">
             </div>
             <div className="userDetails">

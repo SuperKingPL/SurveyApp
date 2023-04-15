@@ -6,7 +6,7 @@ interface messageProps {
 const Message = (props: messageProps) => {
     return (
         <div className="messageContainer">
-            <div className="userAvatar" style={{width: 65, height: 65, minWidth: 65, maxWidth: 65, minHeight: 65, maxHeight: 65, backgroundImage: "url(https://image.api.playstation.com/cdn/EP1464/CUSA07669_00/jBeiHA5Cmkwq4OV4Pz9dkTKmiVC4WTB1.png?w=440&thumb=false)"}}></div>
+            <div className="userAvatar" style={{width: 65, height: 65, minWidth: 65, maxWidth: 65, minHeight: 65, maxHeight: 65, backgroundImage: "url(https://cdn-icons-png.flaticon.com/512/149/149071.png)"}}></div>
             <div className="messageContent">
                 <span className="messageAuthor">{props.author}</span>
                 <span className="messageText">{props.content}</span>
