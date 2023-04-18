@@ -2,9 +2,11 @@ import {Document, model, Schema} from 'mongoose'
 import { GenerateSnowflake } from "../services/snowflakeService";
 
 export interface UserDocument extends Document {
-    _id: string | never;
-    id: string;
-
+    _id: string
+    email: string
+    username: string
+    discriminator: string
+    bot: boolean
 }
 
 export const User = model<UserDocument>('user', new Schema({
@@ -14,8 +16,18 @@ export const User = model<UserDocument>('user', new Schema({
     },
     email: {
         type: String,
-        unique: [true, "Email is already in use."],
+        unique: true,
         dropDups: true,
         uniqueCaseSensitive: true,
+    },
+    username: {
+        type: String
+    },
+    discriminator: {
+        type: String
+    },
+    bot: {
+        type: Boolean,
+        default: false
     }
-}))
+}), "users")

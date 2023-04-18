@@ -9,7 +9,9 @@
     background: var(--background1);
     border-radius: 10px;
 }
-
+body {
+    overflow: hidden;
+}
 a {
     color: rgb(16, 116, 216);
     text-decoration: none;
