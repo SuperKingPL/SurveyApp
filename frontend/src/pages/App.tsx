@@ -30,7 +30,7 @@ function App() {
 
             <Channel name='chat' emoji='😊' type={channelType.text}/>
             <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='kanał głosowy' emoji='🔈' type={channelType.voice}/>
             <Channel name='media' emoji='📷' type={channelType.text}/>
             <Channel name='media' emoji='📷' type={channelType.text}/>
             <Channel name='media' emoji='📷' type={channelType.text}/>
