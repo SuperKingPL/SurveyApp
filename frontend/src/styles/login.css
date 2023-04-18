@@ -1,3 +1,9 @@
+.formMount {
+    background-image: url(https://4kwallpapers.com/images/wallpapers/mountains-winter-daytime-glacier-blue-mountain-range-5k-4480x2520-1248.jpg);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
 .Form {
     position: absolute;
     display: flex;
@@ -15,4 +21,5 @@
     color: white;
     padding: 15px;
     box-shadow: 0px 0px 24px -5px rgba(35, 36, 41, 1);
+    
 }

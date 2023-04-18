@@ -24,30 +24,45 @@ function App() {
             <div className="ServerQuickInfo">
               <ServerBadge/>Survey Support
             </div>
+          </div>
+          <div className="Mount2">
             <div className="ServerBanner"/>
 
             <Channel name='chat' emoji='😊' type={channelType.text}/>
             <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            <Channel name='media' emoji='📷' type={channelType.text}/>
+            
           </div>
-          <div className="Mount2">
+          <div className="Mount3">
             <SelfUserInfo/>
           </div>
         </div>
         <div className="ContentBar">
           <div className="ChannelQuickInfo">
-            #Channel;
+            #chat
           </div>
-          <Message author='Michał Kwiatkowski' content='Lubisz jamniki?'/>
-          <Message author='Qx' content='nie'/>
-          <SkeletonPlaceholder/>
+          <Message author='Test user #1' content='Cześć'/>
+          <Message author='Test user #2' content='cześć'/>
           <TextInput/>
         </div>
         <div className="MembersBar">
           <RoleGroup name="Administrator"/>
-          <User name="SuperKing" customStatus='Currently developing...' avatar='https://cdn.discordapp.com/avatars/726424660014530626/0d4accc92e2754ec2df9d1e5d45d319a.webp'/>
+          <User name="SuperKing" customStatus='💯 Currently developing...' avatar='https://cdn.discordapp.com/avatars/726424660014530626/0d4accc92e2754ec2df9d1e5d45d319a.webp'/>
           <RoleGroup name="Moderator"/>
-          <User name="Michał Kwiatkowski" customStatus='lol' avatar='https://cdn-icons-png.flaticon.com/512/149/149071.png'/>
-          <User name="Qx" customStatus='xd' avatar='https://cdn-icons-png.flaticon.com/512/149/149071.png'/>
+          <User name="Test user #1" customStatus='status' avatar='https://cdn-icons-png.flaticon.com/512/149/149071.png'/>
+          <User name="Test uesr #2" customStatus='status' avatar='https://cdn-icons-png.flaticon.com/512/149/149071.png'/>
         </div>
       </div>
     </div>
