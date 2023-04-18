@@ -1,0 +1,13 @@
+.usernameBadge {
+    padding: 3px;
+    background-color: rgb(41, 126, 230);
+    border-radius: 3px;
+    width: min-content;
+    height: min-content;
+    font-size: 13px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    word-break: normal;
+}

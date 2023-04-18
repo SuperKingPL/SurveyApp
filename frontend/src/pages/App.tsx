@@ -53,8 +53,10 @@ function App() {
           <div className="ChannelQuickInfo">
             #chat
           </div>
-          <Message author='Test user #1' content='Cześć'/>
-          <Message author='Test user #2' content='cześć'/>
+          <div className="messagesContainer">
+            <Message author='Test user #1' content='Cześć'/>
+            <Message author='Test user #2' content='cześć'/>
+          </div>
           <TextInput/>
         </div>
         <div className="MembersBar">

@@ -33,7 +33,8 @@
   justify-content: center;
   color: white;
   align-items: center;
-  height: 90px;
+  min-height: 90px;
+  max-height: 90px;
 }
 .ChannelsBar > .Mount3 {
   width: 100%;
@@ -63,7 +64,8 @@
   align-items: center;
 }
 .Content > .ContentBar > .ChannelQuickInfo {
-  height: 90px;
+  min-height: 90px;
+  max-height: 90px;
   width: 100%;
   background-color: var(--background4);
   box-shadow: 0px 12px 22px -15px rgb(42, 42, 42);
@@ -71,7 +73,6 @@
   align-items: center;
   color: white;
   font-size: 30px;
-  padding: 14px;
 }
 .Content > .MembersBar {
   background-color: var(--background3);
@@ -80,6 +81,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
 }
 .roleGroup {
   width: 85%;
@@ -94,8 +96,7 @@
   overflow: hidden;
   width: 100%;
   padding: 10px;
-  margin: 3px;
-  min-height: 80px;
+  min-height: 60px;
   display: flex;
   align-items: center;
   transition: background-color 0.2s;
@@ -115,6 +116,8 @@
   color: white;
   font-size: 20px;
   margin: 2px;
+  display: flex;
+  align-items: center;
 }
 .messageContainer > .messageContent > .messageText {
   color: rgb(240, 240, 240);
@@ -148,10 +151,13 @@
 }
 .userWrapperContainer > .userDetails > .username {
   color: white;
+  display: flex;
+  align-items: center;
 }
 .userWrapperContainer > .userDetails > .userCustomStatus {
   color: rgb(230, 230, 230);
   font-size: 13px;
+  word-break: break-all;
 }
 .userWrapperContainer > .userDetails {
   display: flex;
@@ -219,8 +225,6 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
-  margin-bottom: 10px;
   width: calc(100% - 25px);
   height: 60px;
   border-radius: 7px;
@@ -236,6 +240,19 @@ button:hover {
   background-color: var(--background5);
   color: white;
   padding: 20px;
+}
+.textInputContainer {
+  min-height: 80px;
+  max-height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.messagesContainer {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 .selfUserInfo {
   display: flex;
