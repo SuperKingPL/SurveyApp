@@ -1,6 +1,6 @@
 import { Input, TextField } from "@mui/material"
 import StarsBackground from "../components/starsBackground"
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import ReCAPTCHA from "react-google-recaptcha";
 import { useState } from "react";
 import Cookies from "universal-cookie";
@@ -8,6 +8,8 @@ import Cookies from "universal-cookie";
 const Register = () => {
 
     const [captchaVerified,setCaptchaVerified] = useState(false);
+
+    const navigate = useNavigate()
 
     function onCaptchaChange() {
         setCaptchaVerified(true)
@@ -18,7 +20,7 @@ const Register = () => {
             fetch('http://127.0.0.1:4000/api/v1/user/register', {
                 method: 'POST',
                 body: JSON.stringify({
-                    email: "asdas@asd.pl",
+                    email: "asdasds@asd.pl",
                     username: "hello",
                     password: "1234"
                 }),
@@ -28,11 +30,11 @@ const Register = () => {
             }).then((res) => res.json()).then((responseJson) => {
                 const cookies = new Cookies();
                 const expireDate = new Date();
-                expireDate.setTime(expireDate.getTime() + (10*60*60*1000))
+                expireDate.setTime(expireDate.getTime() + (20 * 60 * 1000))
 
-                cookies.set("token", responseJson["accessToken"], {path: '/', expires: expireDate})
+                cookies.set("token", responseJson["token"], {path: '/', expires: expireDate})
+                navigate("/app");
             })
-            alert("Register user.")
         }
     }
     return (

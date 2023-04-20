@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { User } from "../models/user";
+import { User, UserDocument } from "../models/user";
 import { tokenizePassword } from "../services/authService";
 
 const userRoute = Router()
@@ -20,6 +20,13 @@ userRoute.post("/register", async (req, res) => {
 
     res.cookie("accessToken", accessToken);
     res.json({success: true, token: accessToken})
+});
+userRoute.get("/:userId/fetch", async (req, res) => {
+    const user = await User.findOne({_id: req.params.userId})
+    if(user != null) {
+        user.token = undefined
+        res.json(user)
+    }
 })
 
 export default userRoute
