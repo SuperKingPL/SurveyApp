@@ -201,7 +201,11 @@ button {
   filter: brightness(100%);
   transition: filter 0.2s;
 }
-button:hover {
+button.disabled {
+  cursor: not-allowed;
+  background-color: rgb(55, 95, 141);
+}
+button:hover:not(.disabled) {
   filter: brightness(120%);
   transition: filter 0.2s;
 }

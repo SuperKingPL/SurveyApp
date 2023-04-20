@@ -14,7 +14,7 @@
     border-radius: 10px;
     background-color: var(--background6);
     width: 580px;
-    height: 320px;
+    min-height: 320px;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
