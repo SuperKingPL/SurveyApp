@@ -21,7 +21,8 @@ function App() {
     socket.on("sendMessage", (data) => {
       console.log(data);
       setMessages(current => [...current, data])
-      document.getElementById("messagesContainer").scrollTop = document.getElementById("messagesContainer").scrollHeight;        
+      document.getElementById("messagesContainer").scrollTop = document.getElementById("messagesContainer").scrollHeight;
+      // TODO: Make messaging for specific channels.
     })
   }, [])
 
