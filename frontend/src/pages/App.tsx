@@ -22,7 +22,7 @@ function App() {
       console.log(data);
       setMessages(current => [...current, data])
       document.getElementById("messagesContainer").scrollTop = document.getElementById("messagesContainer").scrollHeight;
-      // TODO: Make messaging for specific channels.
+      // TODO: Make messaging for specific channels. EDIT: Webhook embed test.
     })
   }, [])
 
