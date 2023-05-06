@@ -9,8 +9,22 @@ import User from '../components/user';
 import TextInput from '../components/textInput';
 import SelfUserInfo from '../components/selfUserInfo';
 import ServerThumbnail from '../components/serverThumbnail';
+import { useEffect, useState } from 'react';
+import { socket } from '../scripts/socket';
 
 function App() {
+
+  const [Messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    socket.connect();
+    socket.on("sendMessage", (data) => {
+      console.log(data);
+      setMessages(current => [...current, data])
+      document.getElementById("messagesContainer").scrollTop = document.getElementById("messagesContainer").scrollHeight;        
+    })
+  }, [])
+
   return (
     <div className='appMount'>
       <div className="ServersBar">
@@ -53,9 +67,8 @@ function App() {
           <div className="ChannelQuickInfo">
             #chat
           </div>
-          <div className="messagesContainer">
-            <Message author='Test user #1' content='Cześć'/>
-            <Message author='Test user #2' content='cześć'/>
+          <div className="messagesContainer" id="messagesContainer">
+            {Messages.map(msg => <Message author='ktos' content={msg["content"]}/>)}
           </div>
           <TextInput/>
         </div>
