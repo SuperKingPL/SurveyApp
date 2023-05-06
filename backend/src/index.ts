@@ -12,8 +12,8 @@ const database = mongoose.connect("mongodb://127.0.0.1:27017/SurveyDB").then((e)
 
     app.get("/", async (req: Request, res: Response) => {
         const user = new User({
-            email: "xd@survey.pl",
-            username: "Wumpus",
+            email: "xatel@upo.up",
+            username: "XeNoNeNiAs",
             discriminator: "0000",
             bot: true
         });

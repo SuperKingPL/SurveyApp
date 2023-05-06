@@ -5,7 +5,6 @@ const guildRoute = Router()
 
 guildRoute.get("/create", async (req, res) => {
     if (Authorize(req.headers.authorization)) {
-        ActionId = getIDByToken(req.headers.authorization);
         
     }
 })
