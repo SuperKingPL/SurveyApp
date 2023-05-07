@@ -13,15 +13,25 @@ import { useEffect, useState } from 'react';
 import { socket } from '../scripts/socket';
 import { fetchUserById } from '../api/userService';
 import { convertTokenToID, getUserToken } from '../api/authService';
+import Cookies from 'universal-cookie';
+import { useNavigate } from 'react-router-dom';
+import Modal from '../components/modal';
 
 function App() {
 
   const [Messages, setMessages] = useState([]);
   const [UserServers, setUserServers] = useState([]);
 
+  const cookies = new Cookies();
+  const navigate = useNavigate();
+
+  const t = cookies.get("token");
+
+  
+
+
   useEffect(() => {
     socket.connect();
-
     socket.on("sendMessage", (data) => {
       setMessages(current => [...current, data])
       document.getElementById("messagesContainer").scrollTop = document.getElementById("messagesContainer").scrollHeight;
@@ -34,8 +44,15 @@ function App() {
 
   }, [])
 
+  if (t == undefined) {
+    console.error("Asduhadhsaui")
+    window.location.href = "/login"
+    return null
+  }
+
   return (
     <div className='appMount'>
+      <Modal/>
       <div className="ServersBar">
         <ServerThumbnail isHome={true}/>
         {UserServers.map(server => <ServerThumbnail/>)}
