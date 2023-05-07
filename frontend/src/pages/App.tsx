@@ -69,7 +69,7 @@ function App() {
             #chat
           </div>
           <div className="messagesContainer" id="messagesContainer">
-            {Messages.map(msg => <Message author='ktos' content={msg["content"]}/>)}
+            {Messages.map(msg => <Message author={msg["author"]} content={msg["content"]}/>)}
           </div>
           <TextInput/>
         </div>

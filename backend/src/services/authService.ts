@@ -5,7 +5,7 @@ export const tokenizePassword = (p: string, id: string) => {
 }
 export const getIDByToken = (token: string | undefined) => {
     if (token == undefined) return
-    atob(token.split('.')[0])
+    return atob(token.split('.')[0])
 }
 export const Authorize = (token: string | undefined) => {
     if (token == undefined) return false
