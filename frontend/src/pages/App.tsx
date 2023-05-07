@@ -25,10 +25,7 @@ function App() {
   const cookies = new Cookies();
   const navigate = useNavigate();
 
-  const t = cookies.get("token");
-
-  
-
+  const t = cookies.get("token"); 
 
   useEffect(() => {
     socket.connect();
@@ -52,7 +49,15 @@ function App() {
 
   return (
     <div className='appMount'>
-      <Modal/>
+      <Modal>
+        <h2>Dołącz do serwera</h2>
+        <p style={{fontSize: '15px'}}>Wprowadź zaproszenie poniżej, aby dołączyć do istniejącego serwera</p>
+        <input placeholder="https://survey.app/G7YkgeVV"/>
+        <div className="img" style={{width: "100%", height: "120px", backgroundSize: "cover", backgroundImage: "url('https://img.freepik.com/free-vector/cartoon-galaxy-background_23-2148984167.jpg')", backgroundPosition: "center", margin: "20px"}}/>
+        <div className="actionBar">
+          <button>Dołącz do serwera</button>
+        </div>
+      </Modal>
       <div className="ServersBar">
         <ServerThumbnail isHome={true}/>
         {UserServers.map(server => <ServerThumbnail/>)}

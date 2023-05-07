@@ -196,7 +196,7 @@ button {
   margin: 10px;
   background-color: rgb(0, 132, 255);
   border-radius: 3px;
-  min-width: 120px;
+  min-width: 90px;
   color: white;
   filter: brightness(100%);
   transition: filter 0.2s;
