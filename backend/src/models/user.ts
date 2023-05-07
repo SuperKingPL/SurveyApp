@@ -8,7 +8,8 @@ export interface UserDocument extends Document {
     username: string
     discriminator: number
     avatarUrl: string
-    bot: boolean
+    bot: boolean,
+    guilds: string[]
 }
 
 export const User = model<UserDocument>('user', new Schema({
@@ -38,5 +39,6 @@ export const User = model<UserDocument>('user', new Schema({
     bot: {
         type: Boolean,
         default: false
-    }
+    },
+    guilds: {}
 }), "users")

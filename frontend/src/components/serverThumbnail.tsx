@@ -1,8 +1,10 @@
 import SpaceDashboardRoundedIcon from '@mui/icons-material/SpaceDashboardRounded';
+import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded'
 
 interface serverThumbnailProps {
     isHome?: boolean
-    isDashboard?: boolean
+    isDashboard?: boolean,
+    isCreateServer?: boolean,
     iconUrl?: string
 }
 
@@ -17,8 +19,14 @@ const ServerThumbnail = (props: serverThumbnailProps) => {
         )
     } else if (props.isDashboard) {
         return (
-            <div className="serverThumb" style={{backgroundImage: `url(${props.iconUrl})`, marginLeft: 'auto'}}>
+            <div className="serverThumb">
                 <SpaceDashboardRoundedIcon htmlColor='white' fontSize='large'/>
+            </div>
+        )
+    } else if (props.isCreateServer) {
+        return (
+            <div className="serverThumb" style={{marginLeft: 'auto'}}>
+                <AddBoxRoundedIcon htmlColor='white' fontSize='large'/>
             </div>
         )
     } else {

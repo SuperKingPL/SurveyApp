@@ -20,7 +20,7 @@ const Register = () => {
     }
 
     const RegisterUser = () => {
-        if (captchaVerified) {
+        if (!captchaVerified) {
             fetch('http://127.0.0.1:4000/api/v1/user/register', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -49,8 +49,8 @@ const Register = () => {
                 <input placeholder='Nazwa użytkownika' ref={usernameInputRef}/>
                 <input placeholder="Hasło" type="password" ref={passwordInputRef}/>
                 <Link to={"/login"}>Masz już konto? Zaloguj się.</Link>
-                <ReCAPTCHA sitekey="6LckvqIlAAAAAHQbQCYrpw_aGFgtNvCZQV6wyjg6" style={{margin: 10}} onChange={onCaptchaChange}/>
-                <button style={{width: 320}} onClick={RegisterUser} className={!captchaVerified ? "disabled" : ""}>Zarejestruj się</button>
+                {/* <ReCAPTCHA sitekey="6LckvqIlAAAAAHQbQCYrpw_aGFgtNvCZQV6wyjg6" style={{margin: 10}} onChange={onCaptchaChange}/> */}
+                <button style={{width: 320}} onClick={RegisterUser} className={!captchaVerified ? "" : ""}>Zarejestruj się</button>
             </div>
         </div>
     )

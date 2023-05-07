@@ -5,7 +5,8 @@ export const fetchUserById = async (id: string) => {
     const response = await fetch(API_URL + `/user/${id}/fetch`, {
         method: 'get',
         headers: new Headers({
-            'Authorization': getUserToken()
+            'Authorization': getUserToken(),
+            // 'Content-Type': "application/json",
         })
     });
     return await response.json()

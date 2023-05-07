@@ -11,26 +11,35 @@ import SelfUserInfo from '../components/selfUserInfo';
 import ServerThumbnail from '../components/serverThumbnail';
 import { useEffect, useState } from 'react';
 import { socket } from '../scripts/socket';
+import { fetchUserById } from '../api/userService';
+import { convertTokenToID, getUserToken } from '../api/authService';
 
 function App() {
 
   const [Messages, setMessages] = useState([]);
+  const [UserServers, setUserServers] = useState([]);
 
   useEffect(() => {
     socket.connect();
+
     socket.on("sendMessage", (data) => {
-      console.log(data);
       setMessages(current => [...current, data])
       document.getElementById("messagesContainer").scrollTop = document.getElementById("messagesContainer").scrollHeight;
       // TODO: Make messaging for specific channels. EDIT: Webhook embed test.
+    });
+
+    fetchUserById(convertTokenToID(getUserToken())).then((e) => {
+      setUserServers(e["guilds"]);
     })
+
   }, [])
 
   return (
     <div className='appMount'>
       <div className="ServersBar">
         <ServerThumbnail isHome={true}/>
-        <ServerThumbnail iconUrl='https://i.pinimg.com/originals/f3/a6/e5/f3a6e57461a25a3e3031349e8a217f51.jpg'/>
+        {UserServers.map(server => <ServerThumbnail/>)}
+        <ServerThumbnail isCreateServer={true}/>
         <ServerThumbnail isDashboard={true}/>
       </div>
       <div className="Content">
@@ -69,7 +78,7 @@ function App() {
             #chat
           </div>
           <div className="messagesContainer" id="messagesContainer">
-            {Messages.map(msg => <Message author={msg["author"]} content={msg["content"]}/>)}
+            {Messages.map(msg => <Message key={msg["id"]} author={msg["author"]} content={msg["content"]}/>)}
           </div>
           <TextInput/>
         </div>
