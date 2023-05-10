@@ -28,9 +28,7 @@ const Modal = () => {
                 </div>
             </div>
         )
-    } else {
-
-    }
+    } else {return null;}
 }
 
 export default Modal
