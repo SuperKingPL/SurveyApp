@@ -1,4 +1,8 @@
 .ModalContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: modalContainerPopup ease-in-out 0.35s;
     width: 100%;
     height: 100vh;
     overflow: hidden;
@@ -6,20 +10,52 @@
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.625);
 }
+@keyframes modalPopup {
+    from {
+        transform: scale(60%);
+        opacity: 0;
+    }
+    to {
+        transform: scale(100%);
+        opacity: 1;
+    }
+}
+@keyframes modalContainerPopup {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 .ModalContainer > .Modal {
+    position: absolute;
     display: flex;
     flex-direction: column;
+    
     align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
     text-align: center;
     color: #fefefe;
-    transform: translate(-50%, -50%);
     padding: 35px 35px 0px 35px;
     background-color: var(--background3);
     border-radius: 6px;
 }
+
+/* Animations */
+.ModalContainer.fadeIn {
+    animation: modalContainerPopup ease-in-out 0.35s;
+}
+.ModalContainer > .Modal.fadeIn {
+    animation: modalPopup ease-in-out 0.35s;
+}
+.ModalContainer.fadeOut {
+
+}
+.ModalContainer > .Modal.fadeOut {
+
+}
+
+
 .Modal > div.img {
     border-radius: 5px;
 }

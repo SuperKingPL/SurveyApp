@@ -2,7 +2,7 @@ import DataSaverOnRoundedIcon from '@mui/icons-material/DataSaverOnRounded';
 import GifBoxRoundedIcon from '@mui/icons-material/GifBoxRounded';
 import EmojiEmotionsRoundedIcon from '@mui/icons-material/EmojiEmotionsRounded';
 import { useEffect, useRef } from 'react';
-import { sendMessage } from '../api/channelService';
+import { sendMessage } from '../services/channelService';
 
 const TextInput = () => {
 
@@ -10,7 +10,7 @@ const TextInput = () => {
 
     useEffect(() => {
         textInput.current.onkeydown = async (event) => {
-            if (event.key == "Enter") {
+            if (event.key === "Enter") {
                 await sendMessage("a", "a", textInput.current.value);
                 textInput.current.value = "";
             }

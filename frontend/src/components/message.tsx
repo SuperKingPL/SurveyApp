@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import UsernameBadge from "./usernameBadge"
-import { fetchUserById } from "../api/userService";
+import { fetchUserById } from "../services/userService";
 
 interface messageProps {
     author: string,

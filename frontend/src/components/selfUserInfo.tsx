@@ -4,9 +4,9 @@ import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded';
 import VolumeOffRoundedIcon from '@mui/icons-material/VolumeOffRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import HandymanRoundedIcon from '@mui/icons-material/HandymanRounded';
-import { fetchUserById } from "../api/userService";
+import { fetchUserById } from "../services/userService";
 import { useState, useEffect } from 'react';
-import { convertTokenToID, getUserToken } from '../api/authService';
+import { convertTokenToID, getUserToken } from '../services/authService';
 
 const SelfUserInfo = () => {
 

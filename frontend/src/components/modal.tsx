@@ -1,21 +1,36 @@
 import { ReactNode } from 'react'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import '../styles/Modal.css'
+import { useAppDispatch, useAppSelector } from '../scripts/hooks';
+import { ModalState, closeModal } from '../store/modal';
+import { store } from '../store/store';
 
-type ModalProps = {
-    children?: ReactNode | ReactNode[],
-    closable?: boolean
+function sleep(ms) {
+    var start = new Date().getTime(), expire = start + ms;
+    while (new Date().getTime() < expire) { }
+    return;
 }
 
-const Modal = ({children}: ModalProps) => {
-    return (
-        <div className="ModalContainer">
-            <div className="Modal">
-                <CloseRoundedIcon className='closeModalButton' fontSize='large' htmlColor='#adadad'/>
-                {children}
+const Modal = () => {
+
+    const dispatch = useAppDispatch();
+    const modalOpen = useAppSelector((state) => state.modal.isOpen);
+    const modalContent = useAppSelector((state) => state.modal.modalContent);
+
+    console.log(modalOpen);
+
+    if (modalOpen) {
+        return (
+            <div className="ModalContainer fadeIn">
+                <div className="Modal fadeIn">
+                    <i onClick={() => dispatch(closeModal())}><CloseRoundedIcon className='closeModalButton' fontSize='large' htmlColor='#adadad'/></i>
+                    {modalContent}
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+
+    }
 }
 
 export default Modal

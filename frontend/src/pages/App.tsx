@@ -9,55 +9,56 @@ import User from '../components/user';
 import TextInput from '../components/textInput';
 import SelfUserInfo from '../components/selfUserInfo';
 import ServerThumbnail from '../components/serverThumbnail';
-import { useEffect, useState } from 'react';
+import { Component, useEffect, useState } from 'react';
 import { socket } from '../scripts/socket';
-import { fetchUserById } from '../api/userService';
-import { convertTokenToID, getUserToken } from '../api/authService';
+import { fetchUserById } from '../services/userService';
+import { convertTokenToID, getUserToken } from '../services/authService';
 import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../components/modal';
+import { useDispatch } from 'react-redux';
+import { closeModal } from '../store/modal';
 
-function App() {
+export default () => {
 
   const [Messages, setMessages] = useState([]);
   const [UserServers, setUserServers] = useState([]);
+  const [OpenModal, SetOpenModal] = useState(false);
 
-  const cookies = new Cookies();
-  const navigate = useNavigate();
-
-  const t = cookies.get("token"); 
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    const cookies = new Cookies();
+  
+    const t = cookies.get("token"); 
+  
+  
+    if (t == undefined) {
+      window.location.href = "/login";
+      return null;
+    }
+
     socket.connect();
+
+    // setTimeout(() => {
+    //   setModal(true);
+    // }, 1000);
+
     socket.on("sendMessage", (data) => {
       setMessages(current => [...current, data])
       document.getElementById("messagesContainer").scrollTop = document.getElementById("messagesContainer").scrollHeight;
-      // TODO: Make messaging for specific channels. EDIT: Webhook embed test.
     });
 
     fetchUserById(convertTokenToID(getUserToken())).then((e) => {
       setUserServers(e["guilds"]);
     })
-
   }, [])
-
-  if (t == undefined) {
-    console.error("Asduhadhsaui")
-    window.location.href = "/login"
-    return null
-  }
 
   return (
     <div className='appMount'>
-      <Modal>
-        <h2>Dołącz do serwera</h2>
-        <p style={{fontSize: '15px'}}>Wprowadź zaproszenie poniżej, aby dołączyć do istniejącego serwera</p>
-        <input placeholder="https://survey.app/G7YkgeVV"/>
-        <div className="img" style={{width: "100%", height: "120px", backgroundSize: "cover", backgroundImage: "url('https://img.freepik.com/free-vector/cartoon-galaxy-background_23-2148984167.jpg')", backgroundPosition: "center", margin: "20px"}}/>
-        <div className="actionBar">
-          <button>Dołącz do serwera</button>
-        </div>
-      </Modal>
+
+    <Modal/>
+
       <div className="ServersBar">
         <ServerThumbnail isHome={true}/>
         {UserServers.map(server => <ServerThumbnail/>)}
@@ -115,5 +116,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
