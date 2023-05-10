@@ -26,13 +26,13 @@ userRoute.post("/register", async (req, res) => {
 userRoute.get("/:userId/fetch", async (req, res) => {
     const auth = await Authorize(req.headers.authorization, req.params.userId);
     if (!auth) {
-        const user = await User.findOne({_id: req.params.userId});
+        const user = await User.findById(req.params.userId);
         if (user != null) {
             user.token = undefined
             res.json(user)
         }
     } else {
-        const user = await User.findOne({_id: req.params.userId});
+        const user = await User.findById(req.params.userId);
         res.json(user)
     }
 })

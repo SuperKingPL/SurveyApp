@@ -2,6 +2,7 @@ import { Router } from "express";
 import { io } from "..";
 import { getIDByToken } from "../services/authService";
 import { GenerateSnowflake } from "../services/snowflakeService";
+import { Message } from "../models/message";
 
 const channelRoute = Router()
 
@@ -16,11 +17,15 @@ channelRoute.post("/:serverId/:channelId/send", (req, res) => {
 
     console.log(content)
 
-    io.emit("sendMessage", {
-        "id": GenerateSnowflake,
-        "content": content,
-        "author": author
-    })
+    const msg = new Message({
+        content: content,
+        author: author,
+        sendTimestamp: Date.now()
+    });
+
+    msg.save();
+    
+    io.emit("sendMessage", msg._id);
 
     res.send("ok")
 })

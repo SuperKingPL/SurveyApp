@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import UsernameBadge from "./usernameBadge"
-import { fetchUserById } from "../services/userService";
+import { fetchUserByID } from "../services/userService";
 
 interface messageProps {
     author: string,
@@ -13,7 +13,7 @@ const Message = (props: messageProps) => {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
-        fetchUserById(props.author).then((u) => {
+        fetchUserByID(props.author).then((u) => {
             setUser(u);
             setLoading(false);
         });

@@ -1,4 +1,4 @@
-import {Document, model, Schema} from 'mongoose'
+import { Document, model, Schema } from 'mongoose'
 import { GenerateDiscriminator, GenerateSnowflake } from "../services/snowflakeService";
 
 export interface UserDocument extends Document {

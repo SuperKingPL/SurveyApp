@@ -11,13 +11,14 @@ import SelfUserInfo from '../components/selfUserInfo';
 import ServerThumbnail from '../components/serverThumbnail';
 import { Component, useEffect, useState } from 'react';
 import { socket } from '../scripts/socket';
-import { fetchUserById } from '../services/userService';
+import { fetchUserByID } from '../services/userService';
 import { convertTokenToID, getUserToken } from '../services/authService';
 import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../components/modal';
 import { useDispatch } from 'react-redux';
 import { closeModal } from '../store/modal';
+import { fetchMessageByID } from '../services/messageService';
 
 export default () => {
 
@@ -44,12 +45,14 @@ export default () => {
     //   setModal(true);
     // }, 1000);
 
-    socket.on("sendMessage", (data) => {
-      setMessages(current => [...current, data])
-      document.getElementById("messagesContainer").scrollTop = document.getElementById("messagesContainer").scrollHeight;
+    socket.on("sendMessage", (data: string) => {
+      fetchMessageByID(data).then((msg) => {
+        setMessages(current => [...current, msg])
+        document.getElementById("messagesContainer").scrollTop = document.getElementById("messagesContainer").scrollHeight;
+      })
     });
 
-    fetchUserById(convertTokenToID(getUserToken())).then((e) => {
+    fetchUserByID(convertTokenToID(getUserToken())).then((e) => {
       setUserServers(e["guilds"]);
     })
   }, [])
