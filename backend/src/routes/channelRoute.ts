@@ -1,18 +1,18 @@
 import { Router } from "express";
 import { io } from "..";
 import { getIDByToken } from "../services/authService";
-import { GenerateSnowflake } from "../services/snowflakeService";
 import { Message } from "../models/message";
 
 const channelRoute = Router()
 
-channelRoute.get("/:serverId/:channelId/", async (req, res) => {
-    
-});
+channelRoute.get("/:channelID/messages", async (req, res) => {
+    const channelID = req.params.channelID;
+    res.json(await Message.find({channel: channelID}));
+})
 
-channelRoute.post("/:serverId/:channelId/send", (req, res) => {
-    console.log("Request getted.")
+channelRoute.post("/:channelID/send", (req, res) => {
     const {content} = req.body;
+    const channelID = req.params.channelID;
     const author = getIDByToken(req.headers.authorization);
 
     console.log(content)
@@ -20,7 +20,8 @@ channelRoute.post("/:serverId/:channelId/send", (req, res) => {
     const msg = new Message({
         content: content,
         author: author,
-        sendTimestamp: Date.now()
+        sendTimestamp: Date.now(),
+        channel: channelID
     });
 
     msg.save();

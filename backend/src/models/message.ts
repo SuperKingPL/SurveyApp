@@ -5,7 +5,8 @@ export interface MessageDocument extends Document {
     _id: string
     content: string,
     author: string,
-    sendTimestamp: Date
+    sendTimestamp: number,
+    channel: string
 }
 
 export const Message = model<MessageDocument>('message', new Schema({
@@ -22,7 +23,11 @@ export const Message = model<MessageDocument>('message', new Schema({
         required: true
     },
     sendTimestamp: {
-        type: Date,
+        type: Number,
+        required: true
+    },
+    channel: {
+        type: String,
         required: true
     }
 }), "messages")

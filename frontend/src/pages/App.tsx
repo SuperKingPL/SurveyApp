@@ -4,29 +4,23 @@ import Message from '../components/message';
 import RoleGroup from '../components/rolegroup';
 import {Channel, channelType} from '../components/channel';
 import ServerBadge from '../components/serverBadge';
-import SkeletonPlaceholder from '../components/skeleton';
 import User from '../components/user';
 import TextInput from '../components/textInput';
 import SelfUserInfo from '../components/selfUserInfo';
 import ServerThumbnail from '../components/serverThumbnail';
-import { Component, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { socket } from '../scripts/socket';
 import { fetchUserByID } from '../services/userService';
 import { convertTokenToID, getUserToken } from '../services/authService';
 import Cookies from 'universal-cookie';
-import { useNavigate } from 'react-router-dom';
 import Modal from '../components/modal';
-import { useDispatch } from 'react-redux';
-import { closeModal } from '../store/modal';
 import { fetchMessageByID } from '../services/messageService';
+import { getMessages } from '../services/channelService';
 
 export default () => {
 
   const [Messages, setMessages] = useState([]);
   const [UserServers, setUserServers] = useState([]);
-  const [OpenModal, SetOpenModal] = useState(false);
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const cookies = new Cookies();
@@ -41,14 +35,17 @@ export default () => {
 
     socket.connect();
 
-    // setTimeout(() => {
-    //   setModal(true);
-    // }, 1000);
+    getMessages("1").then((res: []) => {
+      
+      for (var i = 0; i < res.length; i++) {
+        const id = res[i];
+        setMessages(current => [...current, id])
+      }
+    })
 
     socket.on("sendMessage", (data: string) => {
       fetchMessageByID(data).then((msg) => {
         setMessages(current => [...current, msg])
-        document.getElementById("messagesContainer").scrollTop = document.getElementById("messagesContainer").scrollHeight;
       })
     });
 
@@ -104,7 +101,7 @@ export default () => {
             #chat
           </div>
           <div className="messagesContainer" id="messagesContainer">
-            {Messages.map(msg => <Message key={msg["id"]} author={msg["author"]} content={msg["content"]}/>)}
+            {Messages.map(msg => <Message key={msg["_id"]} author={msg["author"]} content={msg["content"]} timestamp={msg["sendTimestamp"]}/>)}
           </div>
           <TextInput/>
         </div>

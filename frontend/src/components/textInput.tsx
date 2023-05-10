@@ -11,7 +11,7 @@ const TextInput = () => {
     useEffect(() => {
         textInput.current.onkeydown = async (event) => {
             if (event.key === "Enter") {
-                await sendMessage("a", "a", textInput.current.value);
+                await sendMessage("1", textInput.current.value);
                 textInput.current.value = "";
             }
         }
