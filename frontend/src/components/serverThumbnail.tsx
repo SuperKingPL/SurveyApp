@@ -37,7 +37,7 @@ const ServerThumbnail = (props: serverThumbnailProps) => {
     if (props.isHome) {
         return (
             <div className="serverThumb" style={{backgroundImage: `url(${props.iconUrl})`}}>
-                <img src='https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png' width={45} height={34} style={{filter: 'brightness(1000%)'}}/>
+                <img src='https://cdn.discordapp.com/attachments/1023265697293406320/1105918466696949760/SurveyWhite.png' width={31} height={34} style={{filter: 'brightness(1000%)'}}/>
             </div>
         )
     } else if (props.isDashboard) {
@@ -54,7 +54,11 @@ const ServerThumbnail = (props: serverThumbnailProps) => {
         )
     } else {
         return (
-            <div className="serverThumb" style={{backgroundImage: `url(${props.iconUrl})`}}/>
+            <>
+                <div className="serverThumb" style={{backgroundImage: `url(${props.iconUrl})`}}>
+                <div className="activeServerThumb"></div>
+                </div>
+            </>
         )
     }
 }

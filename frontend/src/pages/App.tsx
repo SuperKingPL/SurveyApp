@@ -61,7 +61,7 @@ export default () => {
 
       <div className="ServersBar">
         <ServerThumbnail isHome={true}/>
-        {UserServers.map(server => <ServerThumbnail/>)}
+        {UserServers.map(server => <ServerThumbnail iconUrl='https://cryptologos.cc/logos/the-sandbox-sand-logo.png'/>)}
         <ServerThumbnail isCreateServer={true}/>
         <ServerThumbnail isDashboard={true}/>
       </div>
@@ -78,18 +78,6 @@ export default () => {
             <Channel name='chat' emoji='😊' type={channelType.text}/>
             <Channel name='media' emoji='📷' type={channelType.text}/>
             <Channel name='kanał głosowy' emoji='🔈' type={channelType.voice}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
             
           </div>
           <div className="Mount3">
@@ -110,7 +98,7 @@ export default () => {
           <User name="SuperKing" customStatus='💯 Currently developing...' avatar='https://cdn.discordapp.com/avatars/726424660014530626/0d4accc92e2754ec2df9d1e5d45d319a.webp'/>
           <RoleGroup name="Moderator"/>
           <User name="Test user #1" customStatus='status' avatar='https://cdn-icons-png.flaticon.com/512/149/149071.png'/>
-          <User name="Test uesr #2" customStatus='status' avatar='https://cdn-icons-png.flaticon.com/512/149/149071.png'/>
+          <User name="Test user #2" customStatus='status' avatar='https://cdn-icons-png.flaticon.com/512/149/149071.png'/>
         </div>
       </div>
     </div>

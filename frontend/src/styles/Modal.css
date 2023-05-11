@@ -41,10 +41,10 @@
 
 /* Animations */
 .ModalContainer.fadeIn {
-    animation: modalContainerPopup ease-in-out 0.35s;
+    animation: modalContainerPopup ease-in-out 0.2s;
 }
 .ModalContainer > .Modal.fadeIn {
-    animation: modalPopup ease-in-out 0.35s;
+    animation: modalPopup ease-in-out 0.2s;
 }
 .ModalContainer.fadeOut {
 

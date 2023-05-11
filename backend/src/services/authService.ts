@@ -2,7 +2,7 @@ import { createHash } from "crypto";
 import { User } from "../models/user";
 import { Response } from "express";
 
-export const tokenizePassword = (p: string, id: string) => {
+export const encryptPassword = (p: string, id: string) => {
     return Buffer.from(id).toString("base64url") + '.' + createHash('sha256').update(p).digest('hex')
 }
 export const getIDByToken = (token: string | undefined) => {

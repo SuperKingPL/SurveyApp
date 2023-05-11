@@ -13,8 +13,9 @@ const User = (props: userProps) => {
                 <div className="userStatus">
             </div>
             <div className="userDetails">
-                <span className="username">{props.name} <UsernameBadge badge="BOT"/></span>
+                <span className="username">{props.name} </span>
                 <span className="userCustomStatus">{props.customStatus}</span>
+                {/* <UsernameBadge badge="BOT"/> */}
             </div>
         </div>
     )

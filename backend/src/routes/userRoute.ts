@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { User, UserDocument } from "../models/user";
-import { Authorize, tokenizePassword } from "../services/authService";
+import { Authorize, encryptPassword } from "../services/authService";
 
 const userRoute = Router()
 
@@ -14,7 +14,7 @@ userRoute.post("/register", async (req, res) => {
     user.email = email
     user.username = username
     user.avatarUrl = "https://external-preview.redd.it/4PE-nlL_PdMD5PrFNLnjurHQ1QKPnCvg368LTDnfM-M.png?auto=webp&s=ff4c3fbc1cce1a1856cff36b5d2a40a6d02cc1c3"
-    const accessToken = tokenizePassword(password, user.id)
+    const accessToken = encryptPassword(password, user.id)
     user.token = accessToken
     user.guilds = []
     
