@@ -7,7 +7,7 @@ const authRoute = Router();
 authRoute.post("/", async(req, res) => {
     const {email, password} = req.body;
 
-    const uid = await(await User.findOne({email: email}));
+    const uid = await(await User.findOne({email: email.toLowerCase()}));
     if (uid == null) {res.json({"status": "auth_failed"}); return}
 
     if (encryptPassword(password, uid?.id) === uid?.token) {

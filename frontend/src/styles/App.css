@@ -316,12 +316,12 @@ input:not(.textInput > input):not(.MuiInputBase-input) {
   background-color: var(--background2);
   width: 70px;
   height: 70px;
-  transition: border-radius 0.2s;
+  transition: border-radius 0.5s;
 }
 .serverThumb:hover {
   cursor: pointer;
-  border-radius: 30%;
-  transition: border-radius 0.2s;
+  border-radius: 20%;
+  transition: border-radius 0.5s;
 }
 input {
   color: white;

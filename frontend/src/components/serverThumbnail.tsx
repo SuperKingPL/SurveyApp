@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux/es/exports';
 import Modal from './modal';
 import { closeModal, openModal } from '../store/modal';
 import { ModalState } from "../store/modal";
+import { GuildService } from '../services/guildService';
 
 interface serverThumbnailProps {
     isHome?: boolean
@@ -18,6 +19,10 @@ const ServerThumbnail = (props: serverThumbnailProps) => {
     
     const OpenAddServerModal = () => {
         
+        const createServer = () => {
+            GuildService.createServer("Test server")
+        }
+
         dispatch(openModal(
         <>
             <h2>Dołącz do serwera</h2>
@@ -26,8 +31,10 @@ const ServerThumbnail = (props: serverThumbnailProps) => {
             <div className="img" style={{width: "100%", height: "120px", backgroundSize: "cover", backgroundImage: "url('https://img.freepik.com/free-vector/cartoon-galaxy-background_23-2148984167.jpg')", backgroundPosition: "center", margin: "20px"}}/>
             <div className="actionBar">
                 <button onClick={() => {dispatch(closeModal())}}>Dołącz do serwera</button>
+                <button onClick={createServer}>Stwórz nowy serwer</button>
             </div>
-        </>));
+        </>
+        ));
     }
 
 

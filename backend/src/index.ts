@@ -4,7 +4,6 @@ import { User } from "./models/user";
 import serverRouter from "./routes/server";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import { guild } from "./models/guild";
 import { channel } from "./models/channel";
 
 const app: Express = express(); 
@@ -23,9 +22,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-new guild({name: "test guild", channels: ["12312313"]}).save();
-new channel({name: "test channel", emoji: "😒"}).save();
-
 console.log("Runned socket server.")
 
 const database = mongoose.connect("mongodb://127.0.0.1:27017/SurveyDB").then((e) => {
@@ -33,15 +29,4 @@ const database = mongoose.connect("mongodb://127.0.0.1:27017/SurveyDB").then((e)
 
     app.use(express.json())
     app.use("/api/v1/", serverRouter)
-
-    app.get("/", async (req: Request, res: Response) => {
-        const user = new User({
-            email: "xatel@upo.up",
-            username: "XeNoNeNiAs",
-            discriminator: "0000",
-            bot: true
-        });
-        user.save()
-        res.send("Zapisano")
-    })
 })

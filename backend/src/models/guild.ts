@@ -8,7 +8,7 @@ export interface GuildDocument extends Document {
     channels: string[]
 }
 
-export const guild = model<GuildDocument>('guild', new Schema({
+export const Guild = model<GuildDocument>('guild', new Schema({
     _id: {
         default: GenerateSnowflake,
         type: String

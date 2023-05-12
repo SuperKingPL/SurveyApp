@@ -1,5 +1,6 @@
 import { Document, model, Schema } from 'mongoose'
 import { GenerateDiscriminator, GenerateSnowflake } from "../services/snowflakeService";
+import { Guild } from './guild';
 
 export interface UserDocument extends Document {
     _id: string
@@ -12,7 +13,7 @@ export interface UserDocument extends Document {
     guilds: string[]
 }
 
-export const User = model<UserDocument>('user', new Schema({
+const userSchema = new Schema({
     _id: {
         type: String,
         default: GenerateSnowflake
@@ -40,5 +41,20 @@ export const User = model<UserDocument>('user', new Schema({
         type: Boolean,
         default: false
     },
-    guilds: {}
-}), "users")
+    guilds: {},
+    joinGuild: Number
+}, {
+    methods: {
+        async joinGuild(guildID) {
+            const guild = await(await Guild.findOne({_id: guildID}));
+            if (guild != null) {
+                this.updateOne({guilds: [...this.guilds, guild.id]})
+                return 200
+            } else {
+                return 404
+            }
+        }
+    }
+});
+
+export const User = model<UserDocument>('user', userSchema, "users")

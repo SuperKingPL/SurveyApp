@@ -11,7 +11,7 @@ userRoute.post("/register", async (req, res) => {
     // Define user
     const user = new User()
 
-    user.email = email
+    user.email = email.toLowerCase()
     user.username = username
     user.avatarUrl = "https://external-preview.redd.it/4PE-nlL_PdMD5PrFNLnjurHQ1QKPnCvg368LTDnfM-M.png?auto=webp&s=ff4c3fbc1cce1a1856cff36b5d2a40a6d02cc1c3"
     const accessToken = encryptPassword(password, user.id)
