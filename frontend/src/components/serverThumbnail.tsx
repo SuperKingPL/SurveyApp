@@ -4,9 +4,11 @@ import { useDispatch } from 'react-redux/es/exports';
 import Modal from './modal';
 import { closeModal, openModal } from '../store/modal';
 import { ModalState } from "../store/modal";
-import { GuildService } from '../services/guildService';
+import { GuildService } from '../services/GuildService';
+import Tooltip from '@mui/material/Tooltip/Tooltip';
 
 interface serverThumbnailProps {
+    name?: string,
     isHome?: boolean
     isDashboard?: boolean,
     isCreateServer?: boolean,
@@ -20,7 +22,8 @@ const ServerThumbnail = (props: serverThumbnailProps) => {
     const OpenAddServerModal = () => {
         
         const createServer = () => {
-            GuildService.createServer("Test server")
+            GuildService.CreateServer("Test server");
+            dispatch(closeModal());
         }
 
         dispatch(openModal(
@@ -43,29 +46,35 @@ const ServerThumbnail = (props: serverThumbnailProps) => {
 
     if (props.isHome) {
         return (
-            <div className="serverThumb" style={{backgroundImage: `url(${props.iconUrl})`}}>
-                <img src='https://cdn.discordapp.com/attachments/1023265697293406320/1105918466696949760/SurveyWhite.png' width={31} height={34} style={{filter: 'brightness(1000%)'}}/>
-            </div>
+            <Tooltip title="Strona główna">
+                <div className="serverThumb" style={{backgroundImage: `url(${props.iconUrl})`}}>
+                    <img src='https://cdn.discordapp.com/attachments/1023265697293406320/1105918466696949760/SurveyWhite.png' width={31} height={34} style={{filter: 'brightness(1000%)'}}/>
+                </div>
+            </Tooltip>
         )
     } else if (props.isDashboard) {
         return (
-            <div className="serverThumb">
-                <SpaceDashboardRoundedIcon htmlColor='white' fontSize='large'/>
-            </div>
+            <Tooltip title="Panel użytkownika">
+                <div className="serverThumb">
+                    <SpaceDashboardRoundedIcon htmlColor='white' fontSize='large'/>
+                </div>
+            </Tooltip>
         )
     } else if (props.isCreateServer) {
         return (
-            <div className="serverThumb" style={{marginLeft: 'auto'}} onClick={OpenAddServerModal}>
+            <Tooltip title="Dodaj serwer">
+                <div className="serverThumb" style={{marginLeft: 'auto'}} onClick={OpenAddServerModal}>
                 <AddBoxRoundedIcon htmlColor='white' fontSize='large'/>
-            </div>
+                </div>
+            </Tooltip>
         )
     } else {
         return (
-            <>
+            <Tooltip title={props.name}>
                 <div className="serverThumb" style={{backgroundImage: `url(${props.iconUrl})`}}>
                 <div className="activeServerThumb"></div>
                 </div>
-            </>
+            </Tooltip>
         )
     }
 }

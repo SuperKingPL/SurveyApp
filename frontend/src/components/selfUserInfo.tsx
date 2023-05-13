@@ -4,9 +4,9 @@ import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded';
 import VolumeOffRoundedIcon from '@mui/icons-material/VolumeOffRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import HandymanRoundedIcon from '@mui/icons-material/HandymanRounded';
-import { fetchUserByID } from "../services/userService";
+import UserService from "../services/UserService";
 import { useState, useEffect } from 'react';
-import { convertTokenToID, getUserToken } from '../services/authService';
+import AuthService from '../services/AuthService';
 
 const SelfUserInfo = () => {
 
@@ -20,12 +20,10 @@ const SelfUserInfo = () => {
     });
     
     useEffect(() => {
-        fetchUserByID(convertTokenToID(getUserToken())).then((json) => {
-            setUser(json);
-            console.log(json);
+        new UserService(AuthService.GetUserID()).Fetch().then((e) => {
+            setUser(e);
         });
     }, [])
-    console.log(convertTokenToID(getUserToken()))
     return (
         <div className="selfUserInfo">
             <img src={user["avatarUrl"]} className="userAvatar" width={40} height={40} style={{minWidth: 40, minHeight: 40, maxWidth: 40, maxHeight: 40}}/>

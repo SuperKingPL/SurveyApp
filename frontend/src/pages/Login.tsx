@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import '../styles/login.css'
 import { useRef } from 'react'
-import { authenticateUser } from '../services/authService';
+import AuthService from '../services/AuthService';
 import Cookies from 'universal-cookie';
 
 const Login = () => {
@@ -12,12 +12,11 @@ const Login = () => {
     const navigate = useNavigate();
 
     const auth = async () => {
-        const req = await authenticateUser(emailInputRef.current.value, passwordInputRef.current.value);
+        const req = await AuthService.AuthorizeUser(emailInputRef.current.value, passwordInputRef.current.value);
         if (req.status == "auth_success") {
             const cookies = new Cookies();
             const expireDate = new Date();
             expireDate.setTime(expireDate.getTime() + (20 * 60 * 1000 * 60))
-
             cookies.set("token", req.token, {path: '/', expires: expireDate})
             navigate("/app");
         }

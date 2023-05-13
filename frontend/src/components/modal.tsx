@@ -17,8 +17,6 @@ const Modal = () => {
     const modalOpen = useAppSelector((state) => state.modal.isOpen);
     const modalContent = useAppSelector((state) => state.modal.modalContent);
 
-    console.log(modalOpen);
-
     if (modalOpen) {
         return (
             <div className="ModalContainer fadeIn">

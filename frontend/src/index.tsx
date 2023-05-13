@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './pages/App';
@@ -9,10 +8,10 @@ import Register from './pages/Register';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import axios from "axios"
-import { getUserToken } from './services/authService';
+import AuthService from './services/AuthService';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json'
-axios.defaults.headers.common['Authorization'] = getUserToken();
+axios.defaults.headers.common['Authorization'] = AuthService.GetToken();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

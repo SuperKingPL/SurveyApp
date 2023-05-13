@@ -1,4 +1,4 @@
-import { Document, model, Schema } from 'mongoose'
+import { Document, Model, model, Schema } from 'mongoose'
 import { GenerateDiscriminator, GenerateSnowflake } from "../services/snowflakeService";
 import { Guild } from './guild';
 
@@ -7,13 +7,13 @@ export interface UserDocument extends Document {
     token?: string
     email: string
     username: string
-    discriminator: number
+    discriminator: string
     avatarUrl: string
     bot: boolean,
     guilds: string[]
 }
 
-const userSchema = new Schema({
+export const UserSchema = new Schema({
     _id: {
         type: String,
         default: GenerateSnowflake
@@ -30,7 +30,7 @@ const userSchema = new Schema({
         type: String
     },
     discriminator: {
-        type: Number,
+        type: String,
         default: GenerateDiscriminator
     },
     avatarUrl: {
@@ -41,20 +41,10 @@ const userSchema = new Schema({
         type: Boolean,
         default: false
     },
-    guilds: {},
-    joinGuild: Number
-}, {
-    methods: {
-        async joinGuild(guildID) {
-            const guild = await(await Guild.findOne({_id: guildID}));
-            if (guild != null) {
-                this.updateOne({guilds: [...this.guilds, guild.id]})
-                return 200
-            } else {
-                return 404
-            }
-        }
-    }
+    guilds: {
+        type: Array<String>,
+        default: []
+    },
 });
 
-export const User = model<UserDocument>('user', userSchema, "users")
+export const User = model<UserDocument>('user', UserSchema, "users")

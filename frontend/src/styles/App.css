@@ -314,8 +314,10 @@ input:not(.textInput > input):not(.MuiInputBase-input) {
   background-size: cover;
   background-position: center;
   background-color: var(--background2);
-  width: 70px;
-  height: 70px;
+  min-width: 70px;
+  min-height: 70px;
+  max-width: 70px;
+  max-height: 70px;
   transition: border-radius 0.5s;
 }
 .serverThumb:hover {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import UsernameBadge from "./usernameBadge"
-import { fetchUserByID } from "../services/userService";
+import UserService from "../services/UserService";
 import { format } from "date-fns";
 import { Tooltip, Zoom } from "@mui/material";
 import { pl } from "date-fns/locale";
@@ -17,10 +17,10 @@ const Message = (props: messageProps) => {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
-        fetchUserByID(props.author).then((u) => {
-            setUser(u);
+        new UserService(props.author).Fetch().then((e) => {
+            setUser(e);
             setLoading(false);
-        });
+        })
     }, [])
 
 

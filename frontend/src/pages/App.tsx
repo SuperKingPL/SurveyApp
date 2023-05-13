@@ -10,24 +10,25 @@ import SelfUserInfo from '../components/selfUserInfo';
 import ServerThumbnail from '../components/serverThumbnail';
 import { useEffect, useState } from 'react';
 import { socket } from '../scripts/socket';
-import { fetchUserByID } from '../services/userService';
-import { convertTokenToID, getUserToken } from '../services/authService';
+import UserService, {Self} from '../services/UserService';
+import AuthService from '../services/AuthService';
 import Cookies from 'universal-cookie';
 import Modal from '../components/modal';
-import { fetchMessageByID } from '../services/messageService';
-import { getMessages } from '../services/channelService';
+import MessageService from '../services/MessageService';
+import ChannelService from '../services/ChannelService';
+import { DisplayDevInfo } from '../scripts/dev';
 
 export default () => {
 
   const [Messages, setMessages] = useState([]);
-  const [UserServers, setUserServers] = useState([]);
+  const [UserGuilds, setUserGuilds] = useState([]);
 
   useEffect(() => {
     const cookies = new Cookies();
   
     const t = cookies.get("token"); 
   
-  
+
     if (t == undefined) {
       window.location.href = "/login";
       return null;
@@ -35,7 +36,7 @@ export default () => {
 
     socket.connect();
 
-    getMessages("1").then((res: []) => {
+    new ChannelService("1").GetMessages().then((res: []) => {
       
       for (var i = 0; i < res.length; i++) {
         const id = res[i];
@@ -44,14 +45,22 @@ export default () => {
     })
 
     socket.on("sendMessage", (data: string) => {
-      fetchMessageByID(data).then((msg) => {
+      new MessageService(data).Fetch().then((msg) => {
         setMessages(current => [...current, msg])
       })
     });
+    socket.on("UPDATE_GUILDS", () => {
+      Self.GetUserGuilds().then((e) => {
+        setUserGuilds(e);
+      });
+    });
 
-    fetchUserByID(convertTokenToID(getUserToken())).then((e) => {
-      setUserServers(e["guilds"]);
-    })
+    Self.GetUserGuilds().then((e) => {
+      setUserGuilds(e);
+    });
+
+    DisplayDevInfo();
+
   }, [])
 
   return (
@@ -61,7 +70,7 @@ export default () => {
 
       <div className="ServersBar">
         <ServerThumbnail isHome={true}/>
-        {UserServers.map(server => <ServerThumbnail iconUrl='https://cryptologos.cc/logos/the-sandbox-sand-logo.png'/>)}
+        {UserGuilds.map(server => <ServerThumbnail iconUrl='https://cryptologos.cc/logos/the-sandbox-sand-logo.png' name={server.name} key={server._id}/>)}
         <ServerThumbnail isCreateServer={true}/>
         <ServerThumbnail isDashboard={true}/>
       </div>
