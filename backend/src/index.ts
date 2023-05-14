@@ -8,7 +8,7 @@ import { Channel } from "./models/channel";
 
 const app: Express = express(); 
 const server = createServer(app);
-export const io = new Server(app.listen(4000, "127.0.0.1", () => { console.log("Server started on port 4000...") }), {cors: {origin: "*"}});
+export const io = new Server(app.listen(2115, "127.0.0.1", () => { console.log("Server started on port 4000...") }), {cors: {origin: "*"}});
 
 io.on("connection", (socket) => {
     console.log("Połączono z socketem.")

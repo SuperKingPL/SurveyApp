@@ -1,0 +1,1 @@
+wt.exe -w 1 nt cmd /c "cd backend && npm run dev" ; -w 2 sp cmd /c "cd frontend && npm run start"

@@ -15,7 +15,7 @@ import AuthService from '../services/AuthService';
 import Cookies from 'universal-cookie';
 import Modal from '../components/modal';
 import MessageService from '../services/MessageService';
-import ChannelService from '../services/ChannelService';
+import ChannelService, { IChannel } from '../services/ChannelService';
 import { DisplayDevInfo } from '../scripts/dev';
 import { useAppSelector } from '../scripts/hooks';
 import currentGuild from '../store/currentGuild';
@@ -25,21 +25,33 @@ export default () => {
 
   const [Messages, setMessages] = useState([]);
   const [UserGuilds, setUserGuilds] = useState([]);
+
+  const ActiveGuild = useAppSelector(state => state.currentGuild);
   const [GuildChannels, setGuildChannels] = useState([]);
 
-  const selector = useAppSelector(state => state.currentGuild);
 
   useEffect(() => {
-    const guild = selector.activeGuild._id;
-    const channels = new 
-  }, [selector])
+    console.log(ActiveGuild);
+    var guildChannels = []
+    console.log(GuildChannels);
+    for (const channel in ActiveGuild["activeGuild"]["channels"]) {
+      
+      const channelID = ActiveGuild["activeGuild"]["channels"][channel];
+      console.log("Channel service");
+      new ChannelService(channelID).Fetch().then((e) => {
+        console.log("DASD");
+        guildChannels = ([...guildChannels, e]);
+        console.log(guildChannels);
+      });
+      setGuildChannels(guildChannels);
+    } 
+  }, [ActiveGuild])
 
   useEffect(() => {
     const cookies = new Cookies();
   
     const t = cookies.get("token"); 
   
-
     if (t == undefined) {
       window.location.href = "/login";
       return null;
@@ -89,15 +101,13 @@ export default () => {
         <div className="ChannelsBar">
           <div className="Mount1">
             <div className="ServerQuickInfo">
-              <ServerBadge/>{selector.activeGuild.name}
+              <ServerBadge/>{ActiveGuild.activeGuild.name}
             </div>
           </div>
           <div className="Mount2">
             <div className="ServerBanner"/>
 
-            <Channel name='chat' emoji='😊' type={channelType.text}/>
-            <Channel name='media' emoji='📷' type={channelType.text}/>
-            <Channel name='kanał głosowy' emoji='🔈' type={channelType.voice}/>
+            {GuildChannels.map((ch: IChannel) => <Channel key={ch._id} type={channelType.text} name={ch.name} emoji={ch.emoji}/>)}
             
           </div>
           <div className="Mount3">

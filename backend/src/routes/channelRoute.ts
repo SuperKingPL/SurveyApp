@@ -33,7 +33,8 @@ channelRoute.post("/:channelID/send", (req, res) => {
 });
 
 channelRoute.get("/:channelID/fetch", async (req, res) => {
-    return await Channel.findById(req.params.channelID)
+    console.log(await Channel.findById(req.params.channelID))
+    res.json(await Channel.findById(req.params.channelID));
 });
 
 export default channelRoute

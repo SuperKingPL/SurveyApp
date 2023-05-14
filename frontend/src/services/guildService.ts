@@ -19,6 +19,6 @@ export class GuildService {
         })).data;
     }
     async Fetch() {
-        return await(await axios.get<IGuild>(API_URL + `/guild/${this.Guild}/fetch`)).data;
+        return await(await axios.get(API_URL + `/guild/${this.Guild}/fetch`)).data;
     }
 }
