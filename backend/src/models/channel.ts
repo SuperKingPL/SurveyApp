@@ -3,14 +3,19 @@ import { GenerateSnowflake } from "../services/snowflakeService";
 
 export interface ChannelDocument extends Document {
     _id: string,
+    guild: number,
     name: string,
     emoji: string,
 }
 
-export const channel = model<ChannelDocument>('channel', new Schema({
+export const Channel = model<ChannelDocument>('channel', new Schema({
     _id: {
         type: String,
         default: GenerateSnowflake
+    },
+    guild: {
+        type: Number,
+        required: true
     },
     name: {
         type: String,

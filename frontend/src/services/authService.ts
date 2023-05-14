@@ -13,6 +13,10 @@ export default class AuthService {
         return await(await axios.post(API_URL + "/auth", {email: email, password: password})).data;
     }
     static GetUserID() {
-        return this.ConvertTokenToID(this.GetToken());
+        if (this.GetToken() != undefined) {
+            return this.ConvertTokenToID(this.GetToken());
+        } else {
+            return null;
+        }   
     }
 }

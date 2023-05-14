@@ -1,6 +1,11 @@
 import axios from "axios"
 import { API_URL } from "../config"
 
+export interface IGuild {
+    _id: string,
+    name: string,
+    channels?: string[]
+}
 export class GuildService {
 
     Guild: string | null = null;
@@ -14,6 +19,6 @@ export class GuildService {
         })).data;
     }
     async Fetch() {
-        return await(await axios.get(API_URL + `/guild/${this.Guild}/fetch`)).data;
+        return await(await axios.get<IGuild>(API_URL + `/guild/${this.Guild}/fetch`)).data;
     }
 }

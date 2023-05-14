@@ -17,11 +17,22 @@ import Modal from '../components/modal';
 import MessageService from '../services/MessageService';
 import ChannelService from '../services/ChannelService';
 import { DisplayDevInfo } from '../scripts/dev';
+import { useAppSelector } from '../scripts/hooks';
+import currentGuild from '../store/currentGuild';
+import { GuildService } from '../services/GuildService';
 
 export default () => {
 
   const [Messages, setMessages] = useState([]);
   const [UserGuilds, setUserGuilds] = useState([]);
+  const [GuildChannels, setGuildChannels] = useState([]);
+
+  const selector = useAppSelector(state => state.currentGuild);
+
+  useEffect(() => {
+    const guild = selector.activeGuild._id;
+    const channels = new 
+  }, [selector])
 
   useEffect(() => {
     const cookies = new Cookies();
@@ -70,7 +81,7 @@ export default () => {
 
       <div className="ServersBar">
         <ServerThumbnail isHome={true}/>
-        {UserGuilds.map(server => <ServerThumbnail iconUrl='https://cryptologos.cc/logos/the-sandbox-sand-logo.png' name={server.name} key={server._id}/>)}
+        {UserGuilds.map(server => server != null ? <ServerThumbnail iconUrl='https://cdn.discordapp.com/attachments/1023265697293406320/1106903348663291964/the-sandbox-sand-logo.png' name={server.name} key={server._id} id={server._id}/> : null)}
         <ServerThumbnail isCreateServer={true}/>
         <ServerThumbnail isDashboard={true}/>
       </div>
@@ -78,7 +89,7 @@ export default () => {
         <div className="ChannelsBar">
           <div className="Mount1">
             <div className="ServerQuickInfo">
-              <ServerBadge/>Survey Support
+              <ServerBadge/>{selector.activeGuild.name}
             </div>
           </div>
           <div className="Mount2">

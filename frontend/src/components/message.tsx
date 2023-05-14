@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import UsernameBadge from "./usernameBadge"
 import UserService from "../services/UserService";
-import { format } from "date-fns";
+import { format, isToday, isYesterday } from "date-fns";
 import { Tooltip, Zoom } from "@mui/material";
 import { pl } from "date-fns/locale";
 
@@ -24,6 +24,18 @@ const Message = (props: messageProps) => {
     }, [])
 
 
+    function GetReadeableTimestamp(timestamp: Date) {
+        var Prefix = ""
+        if (isToday(timestamp)) {
+            Prefix = "Dziś o";
+        } else if (isYesterday(timestamp)) {
+            Prefix = "Wczoraj o"
+        } else {
+            Prefix = format(timestamp, "dd.MM.y")
+        }
+        return `${Prefix} ${format(props.timestamp, "HH:mm")}`
+    }
+
     if (!loading) {
         return (
             <div className="messageContainer">
@@ -32,8 +44,8 @@ const Message = (props: messageProps) => {
                     <span className="messageAuthor">
                         {user["username"]}
                         <UsernameBadge badge="Personel" verified={true}/>
-                        <Tooltip title={format(props.timestamp, "iiii, dd MMMM y HH:mm", {locale: pl})} TransitionComponent={Zoom} disableInteractive arrow placement="right">
-                            <p>Dziś o {format(props.timestamp, "HH:mm")}</p>
+                        <Tooltip title={format(props.timestamp, "iiii, dd MMMM y HH:mm", {locale: pl})} disableInteractive arrow placement="top">
+                            <p>{GetReadeableTimestamp(props.timestamp)}</p>
                         </Tooltip>
                     </span>
                     <span className="messageText">{props.content}</span>

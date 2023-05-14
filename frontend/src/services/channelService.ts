@@ -15,4 +15,7 @@ export default class ChannelService {
     async GetMessages() {
         return await(await axios.get(API_URL + `/channel/${this.channel}/messages`)).data;
     }
+    async Fetch() {
+        return await(await axios.get(API_URL + `/channel/${this.channel}/fetch`)).data;
+    }
 }

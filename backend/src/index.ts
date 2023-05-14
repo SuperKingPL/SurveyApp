@@ -4,7 +4,7 @@ import { User } from "./models/user";
 import serverRouter from "./routes/server";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import { channel } from "./models/channel";
+import { Channel } from "./models/channel";
 
 const app: Express = express(); 
 const server = createServer(app);

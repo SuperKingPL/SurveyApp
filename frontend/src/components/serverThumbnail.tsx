@@ -6,10 +6,12 @@ import { closeModal, openModal } from '../store/modal';
 import { ModalState } from "../store/modal";
 import { GuildService } from '../services/GuildService';
 import Tooltip from '@mui/material/Tooltip/Tooltip';
+import { setActiveGuild } from '../store/currentGuild';
 
 interface serverThumbnailProps {
     name?: string,
-    isHome?: boolean
+    id?: number,
+    isHome?: boolean,
     isDashboard?: boolean,
     isCreateServer?: boolean,
     iconUrl?: string
@@ -71,8 +73,8 @@ const ServerThumbnail = (props: serverThumbnailProps) => {
     } else {
         return (
             <Tooltip title={props.name}>
-                <div className="serverThumb" style={{backgroundImage: `url(${props.iconUrl})`}}>
-                <div className="activeServerThumb"></div>
+                <div className="serverThumb" style={{backgroundImage: `url(${props.iconUrl})`}} onClick={() => new GuildService(props.id).Fetch().then((e) => dispatch(setActiveGuild(e)))}>
+                    <div className="activeServerThumb"></div>
                 </div>
             </Tooltip>
         )
