@@ -18,7 +18,8 @@ const Login = () => {
             const expireDate = new Date();
             expireDate.setTime(expireDate.getTime() + (20 * 60 * 1000 * 60))
             cookies.set("token", req.token, {path: '/', expires: expireDate})
-            navigate("/app");
+            window.location.href = "/app";
+            // navigate("/app");
         }
     };
 

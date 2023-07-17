@@ -1,5 +1,5 @@
 import { Document, Model, model, Schema } from 'mongoose'
-import { GenerateDiscriminator, GenerateSnowflake } from "../services/snowflakeService";
+import { GenerateDiscriminator, GenerateSnowflake } from "../services/SnowflakeService";
 import { Guild } from './guild';
 
 export interface UserDocument extends Document {

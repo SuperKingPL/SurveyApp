@@ -1,5 +1,5 @@
 import { Document, model, Schema } from 'mongoose'
-import { GenerateSnowflake } from '../services/snowflakeService'
+import { GenerateSnowflake } from '../services/SnowflakeService'
 
 export interface MessageDocument extends Document {
     _id: string

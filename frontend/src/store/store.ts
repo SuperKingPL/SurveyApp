@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import modalReducer from './modal';
-import currentGuildReducer from './currentGuild';
+import currentGuildReducer from './CurrentGuild';
+import CurrentChannel from './CurrentChannel';
 
 export const store = configureStore({
     reducer: {
         modal: modalReducer,
-        currentGuild: currentGuildReducer
+        currentGuild: currentGuildReducer,
+        CurrentChannel: CurrentChannel
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false

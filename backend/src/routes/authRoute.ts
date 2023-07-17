@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { User } from "../models/user";
-import { encryptPassword } from "../services/authService";
+import { encryptPassword } from "../services/AuthService";
 
 const authRoute = Router();
 

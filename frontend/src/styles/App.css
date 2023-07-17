@@ -1,22 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;400;500;600;700&display=swap');
-.appMount {background-color: var(--background1); width: 100vw; height: 100vh;}
+.appMount {background-color: var(--background1); width: 100vw; height: 100vh; display: flex;}
 .ServersBar {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 90px;
+  min-width: 70px;
+  max-width: 70px;
+  height: 100%;
   background-color: var(--background1);
 }
 .Content {
   display: flex;
-  height: calc(100vh - 90px);
+  width: 100%;
+  height: 100vh;
 }
 .Content > .ChannelsBar {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--background3);
-  width: 600px;
+  width: 280px;
   border-top-left-radius: 15px;
 }
 .ChannelsBar > .Mount2 {
@@ -30,22 +33,27 @@
 .ChannelsBar > .Mount1 {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   color: white;
   align-items: center;
-  min-height: 90px;
-  max-height: 90px;
+  min-height: 68px;
+  max-height: 68px;
+  padding-left: 20px;
+}
+.ChannelsBar > .Mount1:hover {
+    background-color: var(--background2);
 }
 .ChannelsBar > .Mount3 {
   width: 100%;
   height: 90px;
 }
-.Content > .ChannelsBar > .Mount2 > .ServerQuickInfo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--background3);
-  color: white;
+.Content > .ChannelsBar > .Mount1 > .ServerQuickInfo {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    background-color: var(--background3);
+    color: white;
 }
 .Content > .ChannelsBar > .Mount2 > .ServerBanner {
   width: 100%;
@@ -63,8 +71,8 @@
   align-items: center;
 }
 .Content > .ContentBar > .ChannelQuickInfo {
-  min-height: 90px;
-  max-height: 90px;
+  min-height: 68px;
+  max-height: 68px;
   width: 100%;
   background-color: var(--background4);
   box-shadow: 0px 12px 22px -15px rgb(42, 42, 42);
@@ -72,10 +80,12 @@
   align-items: center;
   color: white;
   font-size: 30px;
+  padding: 20px;
 }
 .Content > .MembersBar {
   background-color: var(--background3);
-  width: 500px;
+  min-width: 240px;
+  max-width: 240px;
   border-top-right-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -122,6 +132,7 @@
   font-size: 12px;
   color: #b6b6b6;
   margin-left: 8px;
+  -webkit-user-select: none;
   user-select: none;
 }
 .messageContainer > .messageContent > .messageText {
@@ -147,12 +158,13 @@
 }
 .channelContainer {
   width: calc(100% - 20px);
-  min-height: 45px;
-  max-height: 45px;
+  min-height: 35px;
+  max-height: 35px;
   display: flex;
   align-items: center;
   padding: 5px;
-  border-radius: 7px;
+  border-radius: 3px;
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 .userWrapperContainer > .userDetails > .username {
@@ -181,10 +193,12 @@
 .channelContainer > .channelEmoji {
   font-size: 20px;
   margin-right: 5px;
+  -webkit-user-select: none;
   user-select: none;
 }
 .channelContainer > .channelName {
   color: white;
+  -webkit-user-select: none;
   user-select: none;
 }
 .channelContainer > .channelTypeIcon {
@@ -214,13 +228,15 @@ button:hover:not(.disabled) {
   filter: brightness(120%);
   transition: filter 0.2s;
 }
-
 .userWrapperContainer {
   display: flex;
   align-items: center;
   width: 85%;
   padding: 10px;
   border-radius: 7px;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 .userWrapperContainer:hover .userStatus {
@@ -306,35 +322,73 @@ input:not(.textInput > input):not(.MuiInputBase-input) {
   color: white;
 }
 .serverThumb {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  margin: 5px;
-  background-size: cover;
-  background-position: center;
-  background-color: var(--background2);
-  min-width: 70px;
-  min-height: 70px;
-  max-width: 70px;
-  max-height: 70px;
-  transition: border-radius 0.5s;
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin: 5px;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--background2);
+    min-width: 48px;
+    min-height: 48px;
+    max-width: 48px;
+    max-height: 48px;
+    transition: border-radius 0.2s;
 }
-.serverThumb:hover {
-  cursor: pointer;
-  border-radius: 20%;
-  transition: border-radius 0.5s;
+.serverThumb::before {
+    content: '';
+    position: absolute;
+    width: calc(100% + 5px);
+    height: calc(100% + 5px);
+    border-radius: 8px;
+    border: solid 2px #47474f;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.serverThumb:hover::before {
+    opacity: 1;
+    transition: opacity 0.2s;
 }
 input {
   color: white;
 }
 
 .activeServerThumb {
-  width: 40px;
+  width: 4px;
   background-color: white;
-  height: 4px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  height: 40px;
+  border-radius: 5px;
   position: relative;
-  top: 43px;
+  right: 38px;
+}
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.circle {
+    --size: 12px;
+    min-width: var(--size);
+    min-height: var(--size);
+    max-width: var(--size);
+    max-height: var(--size);
+    background-color: white;
+    margin: 2px;
+    border-radius: 50%;
+}
+.circle.green {
+    background-color: #3b8d66;
+    margin-left: 0;
+}
+.circle.white {
+    background-color: #fefeff;
 }

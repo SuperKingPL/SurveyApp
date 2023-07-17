@@ -3,19 +3,23 @@ import GifBoxRoundedIcon from '@mui/icons-material/GifBoxRounded';
 import EmojiEmotionsRoundedIcon from '@mui/icons-material/EmojiEmotionsRounded';
 import { useEffect, useRef } from 'react';
 import ChannelService from '../services/ChannelService';
+import { useAppSelector } from '../scripts/hooks';
 
 const TextInput = () => {
 
     const textInput = useRef<HTMLInputElement>(null);
+    const CurrentChannel = useAppSelector(state => state.CurrentChannel.CurrentChannel);
 
     useEffect(() => {
         textInput.current.onkeydown = async (event) => {
             if (event.key === "Enter") {
-                new ChannelService("1").SendMessage(textInput.current.value);
+                console.log(CurrentChannel.toString());
+                console.log(`Sending message...\nChannel: ${CurrentChannel.toString()}`)
+                new ChannelService(CurrentChannel.toString()).SendMessage(textInput.current.value);
                 textInput.current.value = "";
             }
         }
-    }, [])
+    }, [CurrentChannel])
 
     return (
         <div className="textInputContainer">

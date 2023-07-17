@@ -1,9 +1,9 @@
 import { Router } from "express";
-import userRoute from "./userRoute";
-import guildRoute from "./guildRoute";
-import channelRoute from "./channelRoute";
-import messageRoute from "./messageRoute"
-import authRoute from "./authRoute";
+import userRoute from "./UserRoute";
+import guildRoute from "./GuildRoute";
+import channelRoute from "./ChannelRoute";
+import messageRoute from "./MessageRoute"
+import authRoute from "./AuthRoute";
 
 const serverRouter = Router()
 

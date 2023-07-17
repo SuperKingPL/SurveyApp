@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { GenerateSnowflake } from "../services/snowflakeService";
+import { GenerateSnowflake } from "../services/SnowflakeService";
 
 export interface ChannelDocument extends Document {
     _id: string,

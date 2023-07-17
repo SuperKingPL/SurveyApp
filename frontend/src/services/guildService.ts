@@ -13,7 +13,7 @@ export class GuildService {
     constructor(guildID) {
         this.Guild = guildID;
     }
-    static CreateServer = async (serverName) => {
+    static CreateGuild = async (serverName) => {
         return await(await axios.post(API_URL + "/guild/create", {
             name: serverName
         })).data;

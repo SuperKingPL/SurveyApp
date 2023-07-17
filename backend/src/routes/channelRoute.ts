@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { io } from "..";
-import { getIDByToken } from "../services/authService";
+import { getIDByToken } from "../services/AuthService";
 import { Message } from "../models/message";
 import { Channel } from "../models/channel";
 

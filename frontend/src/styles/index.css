@@ -1,16 +1,25 @@
-* {margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; box-sizing: border-box;}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI',
+    Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+body {
+    overflow: hidden;
+}
 ::-webkit-scrollbar {
     width: 10px;
 }
 ::-webkit-scrollbar-track {
     background: var(--background3);
+    border-radius: 20px;
+    margin: 10px;
 }
 ::-webkit-scrollbar-thumb {
     background: var(--background1);
     border-radius: 10px;
-}
-body {
-    overflow: hidden;
+    border: solid 3px transparent;
 }
 a {
     color: rgb(16, 116, 216);

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { Guild } from "../models/guild";
 import { User, UserDocument } from "../models/user";
-import { UserService } from "../services/userService";
+import { UserService } from "../services/UserService";
 import { Channel } from "../models/channel";
 
 const guildRoute = Router()
@@ -22,7 +22,7 @@ guildRoute.post("/create", async (req, res) => {
 
         const channel = await new Channel({
             name: "ogólny",
-            emoji: "#",
+            emoji: "🌍",
             guild: guild._id
         }).save();
 

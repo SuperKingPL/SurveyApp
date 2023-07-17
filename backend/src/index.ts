@@ -11,7 +11,7 @@ const server = createServer(app);
 export const io = new Server(app.listen(2115, "127.0.0.1", () => { console.log("Server started on port 4000...") }), {cors: {origin: "*"}});
 
 io.on("connection", (socket) => {
-    console.log("Połączono z socketem.")
+    console.log("Połączono z socketem.");
 })
 
 app.use(function(req, res, next) {
@@ -22,11 +22,11 @@ app.use(function(req, res, next) {
     next();
 });
 
-console.log("Runned socket server.")
+console.log("Socket server is running.")
 
 const database = mongoose.connect("mongodb://127.0.0.1:27017/SurveyDB").then((e) => {
-    console.log("Connected to DB.")
+    console.log("Connected to DB.");
 
-    app.use(express.json())
-    app.use("/api/v1/", serverRouter)
-})
+    app.use(express.json());
+    app.use("/api/v1/", serverRouter);
+});

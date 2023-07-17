@@ -2,26 +2,26 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ReactNode } from 'react'
 import { GuildService, IGuild } from "../services/GuildService";
 
-export interface currentGuildState {
-    activeGuild: IGuild
+export interface CurrentGuildState {
+    CurrentGuild: IGuild
 }
 
-const initialState: currentGuildState = {
-    activeGuild: {
+const initialState: CurrentGuildState = {
+    CurrentGuild: {
         _id: "0",
         name: "Unknown server."
     }
 };
 
-const currentGuildSlice = createSlice({
-    name: 'currentGuild',
+const CurrentGuildSlice = createSlice({
+    name: 'CurrentGuild',
     initialState,
     reducers: {
-        setActiveGuild: (state, action) => {
-            state.activeGuild = action.payload;
+        SetCurrentGuild: (state, action) => {
+            state.CurrentGuild = action.payload;
         }
     }
 })
 
-export const {setActiveGuild} = currentGuildSlice.actions;
-export default currentGuildSlice.reducer;
+export const {SetCurrentGuild: SetCurrentGuild} = CurrentGuildSlice.actions;
+export default CurrentGuildSlice.reducer;
