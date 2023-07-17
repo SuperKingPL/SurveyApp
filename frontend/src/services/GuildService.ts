@@ -1,5 +1,6 @@
 import axios from "axios"
 import { API_URL } from "../config"
+import { socket } from "../scripts/socket";
 
 export interface IGuild {
     _id: string,
@@ -13,10 +14,16 @@ export class GuildService {
     constructor(guildID) {
         this.Guild = guildID;
     }
-    static CreateGuild = async (serverName) => {
-        return await(await axios.post(API_URL + "/guild/create", {
-            name: serverName
-        })).data;
+    static CreateGuild = async (GuildName) => {
+        return new Promise((resolve) => {
+            socket.emit("CREATE_GUILD", GuildName, (e) => {
+                resolve(e);
+            });
+        })
+        
+        // return await(await axios.post(API_URL + "/guild/create", {
+        //     name: GuildName
+        // })).data;
     }
     async Fetch() {
         return await(await axios.get(API_URL + `/guild/${this.Guild}/fetch`)).data;

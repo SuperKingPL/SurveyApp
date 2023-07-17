@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import modalReducer from './modal';
-import currentGuildReducer from './CurrentGuild';
+import CurrentGuild from './CurrentGuild';
 import CurrentChannel from './CurrentChannel';
 
 export const store = configureStore({
     reducer: {
-        modal: modalReducer,
-        currentGuild: currentGuildReducer,
+        Modal: modalReducer,
+        CurrentGuild: CurrentGuild,
         CurrentChannel: CurrentChannel
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({

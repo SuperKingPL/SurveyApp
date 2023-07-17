@@ -14,8 +14,8 @@ function sleep(ms) {
 const Modal = () => {
 
     const dispatch = useAppDispatch();
-    const modalOpen = useAppSelector((state) => state.modal.isOpen);
-    const modalContent = useAppSelector((state) => state.modal.modalContent);
+    const modalOpen = useAppSelector((state) => state.Modal.isOpen);
+    const modalContent = useAppSelector((state) => state.Modal.modalContent);
 
     if (modalOpen) {
         return (

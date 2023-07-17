@@ -11,8 +11,6 @@ guildRoute.post("/create", async (req, res) => {
     const auth = req.headers.authorization;
     const user: UserDocument | null = await User.findOne({token: auth})
 
-    console.log(user);
-
     if (user != null) {
 
         const guild = await new Guild({

@@ -1,326 +1,383 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;400;500;600;700&display=swap');
-.appMount {background-color: var(--background1); width: 100vw; height: 100vh; display: flex;}
+
+.appMount {
+    background-color: var(--background1);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
 .ServersBar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 70px;
-  max-width: 70px;
-  height: 100%;
-  background-color: var(--background1);
+    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 70px;
+    max-width: 70px;
+    height: 100%;
+    background-color: var(--background1);
 }
+
 .Content {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-}
-.Content > .ChannelsBar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--background3);
-  width: 280px;
-  border-top-left-radius: 15px;
-}
-.ChannelsBar > .Mount2 {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: auto;
-}
-.ChannelsBar > .Mount1 {
-  width: 100%;
-  display: flex;
-  justify-content: left;
-  color: white;
-  align-items: center;
-  min-height: 68px;
-  max-height: 68px;
-  padding-left: 20px;
-}
-.ChannelsBar > .Mount1:hover {
-    background-color: var(--background2);
-}
-.ChannelsBar > .Mount3 {
-  width: 100%;
-  height: 90px;
-}
-.Content > .ChannelsBar > .Mount1 > .ServerQuickInfo {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+}
+
+.Content>.ChannelsBar {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     background-color: var(--background3);
+    width: 280px;
+    border-top-left-radius: 15px;
+}
+
+.ChannelsBar>.Mount2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+.ChannelsBar>.Mount1 {
+    user-select: none;
+    border-top-left-radius: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    color: white;
+    align-items: center;
+    min-height: 68px;
+    max-height: 68px;
+    padding-left: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.ChannelsBar>.Mount1:hover {
+    background-color: var(--background2);
+    transition: background-color 0.2s;
+}
+
+.ChannelsBar>.Mount3 {
+    width: 100%;
+    height: 90px;
+}
+
+.Content>.ChannelsBar>.Mount1>.ServerQuickInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     color: white;
 }
-.Content > .ChannelsBar > .Mount2 > .ServerBanner {
-  width: 100%;
-  min-height: 130px;
-  max-height: 130px;
-  background-image: url(https://i.pinimg.com/originals/fd/91/13/fd91131ea693096d6be5e8aa99d18f9e.jpg);
-  background-size: cover;
-  margin-bottom: 10px;
+
+.Content>.ChannelsBar>.Mount2>.ServerBanner {
+    width: 100%;
+    min-height: 130px;
+    max-height: 130px;
+    background-image: url(https://i.pinimg.com/originals/fd/91/13/fd91131ea693096d6be5e8aa99d18f9e.jpg);
+    background-size: cover;
+    margin-bottom: 10px;
 }
-.Content > .ContentBar {
-  background-color: var(--background2);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.Content>.ContentBar {
+    background-color: var(--background2);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.Content > .ContentBar > .ChannelQuickInfo {
-  min-height: 68px;
-  max-height: 68px;
-  width: 100%;
-  background-color: var(--background4);
-  box-shadow: 0px 12px 22px -15px rgb(42, 42, 42);
-  display: flex;
-  align-items: center;
-  color: white;
-  font-size: 30px;
-  padding: 20px;
+
+.Content>.ContentBar>.ChannelQuickInfo {
+    min-height: 68px;
+    max-height: 68px;
+    width: 100%;
+    background-color: var(--background4);
+    box-shadow: 0px 12px 22px -15px rgb(42, 42, 42);
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    padding: 20px;
 }
-.Content > .MembersBar {
-  background-color: var(--background3);
-  min-width: 240px;
-  max-width: 240px;
-  border-top-right-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: auto;
+
+.Content>.MembersBar {
+    background-color: var(--background3);
+    min-width: 240px;
+    max-width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
 }
+
 .roleGroup {
-  width: 85%;
-  padding: 10px;
-  background: linear-gradient(90deg, rgba(84,68,78,1) 0%, rgba(62,65,74,1) 100%);
-  border-radius: 5px;
-  color: white;
-  margin: 15px;
+    width: 85%;
+    padding: 10px;
+    background: linear-gradient(90deg, rgba(84, 68, 78, 1) 0%, rgba(62, 65, 74, 1) 100%);
+    border-radius: 5px;
+    color: white;
+    margin: 15px;
 }
 
 .messageContainer {
-  overflow: hidden;
-  width: 100%;
-  padding: 10px;
-  min-height: 60px;
-  display: flex;
-  align-items: center;
-  transition: background-color 0.2s;
+    overflow: hidden;
+    width: 100%;
+    padding: 6px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s;
 }
+
 .messageContainer:hover {
-  background-color: var(--background3);
-  transition: background-color 0.2s;
+    background-color: var(--background3);
+    transition: background-color 0.2s;
 }
-.messageContainer > .messageContent {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  margin-left: 10px;
-  flex-direction: column;
+
+.messageContainer>.messageContent {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    margin-left: 10px;
+    flex-direction: column;
 }
-.messageContainer > .messageContent > .messageAuthor {
-  color: white;
-  font-size: 20px;
-  margin: 2px;
-  display: flex;
-  align-items: center;
+
+.messageContainer>.messageContent>.messageAuthor {
+    color: white;
+    font-size: 17px;
+    margin: 2px;
+    display: flex;
+    align-items: center;
 }
-.messageContainer > .messageContent > .messageAuthor > p {
-  font-size: 12px;
-  color: #b6b6b6;
-  margin-left: 8px;
-  -webkit-user-select: none;
-  user-select: none;
+
+.messageContainer>.messageContent>.messageAuthor>p {
+    font-size: 11px;
+    color: #b6b6b6;
+    margin-left: 8px;
+    -webkit-user-select: none;
+    user-select: none;
 }
-.messageContainer > .messageContent > .messageText {
-  color: rgb(240, 240, 240);
-  margin: 2px;
-  font-size: 16px;
+
+.messageContainer>.messageContent>.messageText {
+    color: rgb(240, 240, 240);
+    margin: 2px;
+    font-size: 15px;
 }
+
 .userAvatar {
-  border-radius: 50%;
-  background-size: cover;
+    border-radius: 50%;
+    background-size: cover;
 }
+
 .userStatus {
-  border-radius: 50%;
-  min-width: 18px;
-  min-height: 18px;
-  max-width: 18px;
-  max-height: 18px;
-  background-color: rgb(8, 192, 8);
-  position: relative;
-  top: 18px;
-  right: 13px;
-  border: solid 3px var(--background3);
+    border-radius: 50%;
+    min-width: 18px;
+    min-height: 18px;
+    max-width: 18px;
+    max-height: 18px;
+    background-color: rgb(8, 192, 8);
+    position: relative;
+    top: 18px;
+    right: 13px;
+    border: solid 3px var(--background3);
 }
+
 .channelContainer {
-  width: calc(100% - 20px);
-  min-height: 35px;
-  max-height: 35px;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+    width: calc(100% - 20px);
+    min-height: 35px;
+    max-height: 35px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
-.userWrapperContainer > .userDetails > .username {
-  color: white;
-  display: flex;
-  align-items: center;
+
+.userWrapperContainer>.userDetails>.username {
+    color: white;
+    display: flex;
+    align-items: center;
 }
-.userWrapperContainer > .userDetails > .userCustomStatus {
-  color: rgb(230, 230, 230);
-  font-size: 13px;
-  word-break: break-all;
+
+.userWrapperContainer>.userDetails>.userCustomStatus {
+    color: rgb(230, 230, 230);
+    font-size: 13px;
+    word-break: break-all;
 }
-.userWrapperContainer > .userDetails {
-  display: flex;
-  flex-direction: column;
+
+.userWrapperContainer>.userDetails {
+    display: flex;
+    flex-direction: column;
 }
-.channelContainer:hover {
-  background-color: var(--background4);
-  transition: background-color 0.2s;
+
+.channelContainer:hover, .channelContainer.active {
+    background-color: var(--background4);
+    transition: background-color 0.2s;
 }
+
 .channelContainer.selected {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: solid 3px white;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: solid 3px white;
 }
-.channelContainer > .channelEmoji {
-  font-size: 20px;
-  margin-right: 5px;
-  -webkit-user-select: none;
-  user-select: none;
+
+.channelContainer>.channelEmoji {
+    font-size: 20px;
+    margin-right: 5px;
+    -webkit-user-select: none;
+    user-select: none;
 }
-.channelContainer > .channelName {
-  color: white;
-  -webkit-user-select: none;
-  user-select: none;
+
+.channelContainer>.channelName {
+    color: white;
+    -webkit-user-select: none;
+    user-select: none;
 }
-.channelContainer > .channelTypeIcon {
-  margin-left: auto;
+
+.channelContainer>.channelTypeIcon {
+    margin-left: auto;
 }
+
 .serverBadge {
-  transform: scale(1.3);
-  margin-right: 10px;
-  margin-bottom: -5px;
+    transform: scale(1.3);
+    margin-right: 10px;
+    margin-bottom: -5px;
 }
+
 button {
-  border: none;
-  padding: 8px;
-  margin: 10px;
-  background-color: rgb(0, 132, 255);
-  border-radius: 3px;
-  min-width: 90px;
-  color: white;
-  filter: brightness(100%);
-  transition: filter 0.2s;
+    border: none;
+    padding: 8px;
+    margin: 10px;
+    background-color: rgb(0, 132, 255);
+    border-radius: 3px;
+    min-width: 90px;
+    color: white;
+    filter: brightness(100%);
+    transition: filter 0.2s;
 }
+
 button.disabled {
-  cursor: not-allowed;
-  background-color: rgb(55, 95, 141);
+    cursor: not-allowed;
+    background-color: rgb(55, 95, 141);
 }
+
 button:hover:not(.disabled) {
-  filter: brightness(120%);
-  transition: filter 0.2s;
+    filter: brightness(120%);
+    transition: filter 0.2s;
 }
+
 .userWrapperContainer {
-  display: flex;
-  align-items: center;
-  width: 85%;
-  padding: 10px;
-  border-radius: 7px;
-  -webkit-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    width: 85%;
+    padding: 10px;
+    border-radius: 7px;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
+
 .userWrapperContainer:hover .userStatus {
-  border: solid 3px var(--background2);
-  transition: border 0.2s;
+    border: solid 3px var(--background2);
+    transition: border 0.2s;
 }
+
 .userWrapperContainer:hover {
-  background-color: var(--background2);
-  transition: background-color 0.2s;
+    background-color: var(--background2);
+    transition: background-color 0.2s;
 }
+
 .textInput {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc(100% - 25px);
-  height: 60px;
-  border-radius: 7px;
-  background-color: var(--background5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 25px);
+    height: 60px;
+    border-radius: 7px;
+    background-color: var(--background5);
 }
-.textInput > input {
-  font-size: 15px;
-  float: right;
-  border: none;
-  outline: none;
-  height: 100%;
-  width: calc(100% - 140px);
-  background-color: var(--background5);
-  color: white;
-  padding: 20px;
+
+.textInput>input {
+    font-size: 15px;
+    float: right;
+    border: none;
+    outline: none;
+    height: 100%;
+    width: calc(100% - 140px);
+    background-color: var(--background5);
+    color: white;
+    padding: 20px;
 }
+
 .textInputContainer {
-  min-height: 80px;
-  max-height: 80px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    min-height: 80px;
+    max-height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .messagesContainer {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
 }
+
 .selfUserInfo {
-  display: flex;
-  align-items: center;
-  width: calc(100% - 20px);
-  background-color: var(--background1);
-  height: 60px;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 10px;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 20px);
+    background-color: var(--background1);
+    height: 60px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
 }
-.selfUserInfo > .user {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 10px;
+
+.selfUserInfo>.user {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
 }
-.selfUserInfo > .user > .username {
-  display: flex;
+
+.selfUserInfo>.user>.username {
+    display: flex;
 }
+
 .interactableIcon {
-  margin: 3px;
-  transition: filter 0.2s;
+    margin: 3px;
+    transition: filter 0.2s;
 }
+
 .interactableIcon:hover {
-  cursor: pointer;
-  filter: brightness(120%);
-  transition: filter 0.2s;
+    cursor: pointer;
+    filter: brightness(120%);
+    transition: filter 0.2s;
 }
 
 input:not(.textInput > input):not(.MuiInputBase-input) {
-  padding: 8px;
-  border: none;
-  margin: 10px;
-  background-color: var(--background5);
-  min-width: 320px;
-  border-radius: 4px;
-  outline: none;
-  color: white;
+    padding: 8px;
+    border: none;
+    margin: 10px;
+    background-color: var(--background5);
+    min-width: 320px;
+    border-radius: 4px;
+    outline: none;
+    color: white;
 }
+
 .serverThumb {
     position: relative;
     display: flex;
@@ -338,36 +395,43 @@ input:not(.textInput > input):not(.MuiInputBase-input) {
     max-height: 48px;
     transition: border-radius 0.2s;
 }
+
 .serverThumb::before {
     content: '';
+    width: 100%;
+    height: 100%;
     position: absolute;
-    width: calc(100% + 5px);
-    height: calc(100% + 5px);
+    box-sizing: border-box;
+    transform: scale(120%);
     border-radius: 8px;
     border: solid 2px #47474f;
     opacity: 0;
     transition: opacity 0.2s;
 }
+
 .serverThumb:hover::before {
     opacity: 1;
     transition: opacity 0.2s;
 }
+
 input {
-  color: white;
+    color: white;
 }
 
 .activeServerThumb {
-  width: 4px;
-  background-color: white;
-  height: 40px;
-  border-radius: 5px;
-  position: relative;
-  right: 38px;
+    width: 4px;
+    background-color: white;
+    height: 40px;
+    border-radius: 5px;
+    position: relative;
+    right: 38px;
 }
+
 .flexColumn {
     display: flex;
     flex-direction: column;
 }
+
 .flexRow {
     display: flex;
     flex-direction: row;
@@ -375,6 +439,7 @@ input {
     width: 100%;
     height: 100%;
 }
+
 .circle {
     --size: 12px;
     min-width: var(--size);
@@ -385,10 +450,16 @@ input {
     margin: 2px;
     border-radius: 50%;
 }
+
 .circle.green {
     background-color: #3b8d66;
     margin-left: 0;
 }
+
 .circle.white {
     background-color: #fefeff;
+}
+
+.css-ja5taz-MuiTooltip-tooltip {
+    background-color: rgb(97, 97, 97) !important;
 }

@@ -5,6 +5,7 @@ import serverRouter from "./routes/server";
 import { createServer } from "http";
 import { Server } from "socket.io";
 import { Channel } from "./models/channel";
+import GuildSocket from "./methods/GuildSocket";
 
 const app: Express = express(); 
 const server = createServer(app);
@@ -12,7 +13,15 @@ export const io = new Server(app.listen(2115, "127.0.0.1", () => { console.log("
 
 io.on("connection", (socket) => {
     console.log("Połączono z socketem.");
-})
+
+    // ! SOCKET GROUPS
+    GuildSocket(socket);
+
+});
+io.use((socket, next) => {
+    console.log(socket.handshake.auth.token);
+    next();
+});
 
 app.use(function(req, res, next) {
     res.setHeader('charset', 'utf-8');
