@@ -5,6 +5,10 @@ import { Channel } from "../models/channel";
 import { UserService } from "../services/UserService";
 
 export default (io: Socket) => {
+    io.on("GET_SOCKET_GROUPS", async(res) => {
+        console.log(io.rooms);
+        res(Array.from(io.rooms));
+    })
     io.on("CREATE_GUILD", async (name, res) => {
         const user: UserDocument | null = await User.findOne({token: io.handshake.auth.token});
 
@@ -23,7 +27,7 @@ export default (io: Socket) => {
 
             await guild.updateOne({channels: [...guild.channels, channel._id]})
 
-            await new UserService(user).joinGuild(guild);
+            await new UserService(user, io).JoinGuild(guild);
 
             res({
                 success: true,

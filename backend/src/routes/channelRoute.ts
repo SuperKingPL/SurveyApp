@@ -11,9 +11,9 @@ channelRoute.get("/:channelID/messages", async (req, res) => {
     res.json(await Message.find({channel: channelID}));
 });
 
-channelRoute.post("/:channelID/send", (req, res) => {
+channelRoute.post("/:channelID/send", async (req, res) => {
     const {content} = req.body;
-    const channelID = req.params.channelID;
+    const channel = await Channel.findById(req.params.channelID);
     const author = getIDByToken(req.headers.authorization);
 
     console.log(content)
@@ -22,12 +22,12 @@ channelRoute.post("/:channelID/send", (req, res) => {
         content: content,
         author: author,
         sendTimestamp: Date.now(),
-        channel: channelID
+        channel: channel?._id
     });
 
     msg.save();
     
-    io.emit("sendMessage", msg._id);
+    io.in("G-" + channel?.guild).emit("SEND_MESSAGE", msg._id, channel?.guild, msg.channel);
 
     res.send("ok")
 });

@@ -26,7 +26,7 @@ guildRoute.post("/create", async (req, res) => {
 
         await guild.updateOne({channels: [...guild.channels, channel._id]})
 
-        await new UserService(user).joinGuild(guild);
+        // await new UserService(user).JoinGuild(guild);
 
         res.json({
             success: true,

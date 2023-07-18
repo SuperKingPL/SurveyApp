@@ -2,16 +2,21 @@ import { Document, Query } from "mongoose";
 import { User, UserDocument } from "../models/user";
 import { GuildDocument } from "../models/guild";
 import { io } from "..";
+import { Socket } from "socket.io";
 
 export class UserService {
 
-    userObject: UserDocument | null = null;
+    UserObject: UserDocument;
+    UserSocket: Socket;
 
-    constructor(UserObject: UserDocument) {
-        this.userObject = UserObject;
+    constructor(UserObject: UserDocument, UserSocket: Socket) {
+        this.UserObject = UserObject;
+        this.UserSocket = UserSocket;
     }
-    async joinGuild(guild: GuildDocument) {
-        await this.userObject?.updateOne({_id: this.userObject._id, guilds: [...this.userObject?.guilds, guild._id]});
-        io.emit("UPDATE_GUILDS");
+    async JoinGuild(guild: GuildDocument) {
+        await this.UserObject?.updateOne({_id: this.UserObject._id, guilds: [...this.UserObject?.guilds, guild._id]});
+        this.UserSocket?.join("G-" + guild._id)
+        io.emit("UPDATE_GUILD_LIST");
+        console.log(this.UserSocket.rooms);
     }
 }
