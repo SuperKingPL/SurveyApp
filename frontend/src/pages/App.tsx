@@ -67,14 +67,14 @@ export default () => {
             return null;
         }
 
-        socket.on("SEND_MESSAGE", (msgID: string, msgGuild: string, msgChannel: string) => {
-            console.log("SOCKET")
-            new MessageService(msgID).Fetch().then((msg) => {
+        socket.on("SEND_MESSAGE", (data) => {
+            new MessageService(data["id"]).Fetch().then((msg) => {
                 // TODO: setMessages(current => [...current, msg])
                 console.log("New message in my zone has been sent!");
-                console.log("Message ID: " + msgID);
-                console.log("Message guild: " + msgGuild);
-                console.log("Message channel: " +  msgChannel)
+                console.log("Message ID: " + data["id"]);
+                console.log("Message guild: " + data["guild"]);
+                console.log("Message channel: " +  data["channel"]);
+                console.log("Message content: " + msg.content);
             })
         });
         socket.on("UPDATE_GUILD_LIST", () => {

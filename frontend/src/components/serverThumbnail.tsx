@@ -72,7 +72,7 @@ const ServerThumbnail = (props: GuildThumbnailProps) => {
     } else if (props.isDashboard) {
         return (
             <Tooltip title="Panel użytkownika" placement='right'>
-                <div className="serverThumb" style={{marginTop: 'auto', marginBottom: '15px'}}>
+                <div className="serverThumb" style={{marginTop: 'auto', marginBottom: '17px'}}>
                     <SpaceDashboardRoundedIcon htmlColor='white' fontSize='medium'/>
                 </div>
             </Tooltip>

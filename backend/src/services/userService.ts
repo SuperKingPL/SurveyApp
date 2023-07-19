@@ -15,7 +15,8 @@ export class UserService {
     }
     async JoinGuild(guild: GuildDocument) {
         await this.UserObject?.updateOne({_id: this.UserObject._id, guilds: [...this.UserObject?.guilds, guild._id]});
-        this.UserSocket?.join("G-" + guild._id)
+        await this.UserSocket?.join(`G-${guild._id}`);
+        console.log(`Dołączyłem do serwera: ${guild._id}`)
         io.emit("UPDATE_GUILD_LIST");
         console.log(this.UserSocket.rooms);
     }

@@ -12,6 +12,7 @@ channelRoute.get("/:channelID/messages", async (req, res) => {
 });
 
 channelRoute.post("/:channelID/send", async (req, res) => {
+    
     const {content} = req.body;
     const channel = await Channel.findById(req.params.channelID);
     const author = getIDByToken(req.headers.authorization);
@@ -27,7 +28,11 @@ channelRoute.post("/:channelID/send", async (req, res) => {
 
     msg.save();
     
-    io.in("G-" + channel?.guild).emit("SEND_MESSAGE", msg._id, channel?.guild, msg.channel);
+    io.sockets.to(`G-${channel?.guild}`).emit("SEND_MESSAGE", {
+        id: msg._id,
+        guild: channel?.guild,
+        channel: msg.channel
+    });
 
     res.send("ok")
 });
