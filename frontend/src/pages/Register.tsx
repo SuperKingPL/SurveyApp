@@ -1,5 +1,5 @@
 import { Input, TextField } from "@mui/material"
-import StarsBackground from "../components/starsBackground"
+import StarsBackground from "../components/StarsBackground"
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import ReCAPTCHA from "react-google-recaptcha";
 import React, { useState } from "react";

@@ -1,4 +1,4 @@
-import UsernameBadge from "./usernameBadge"
+import UsernameBadge from "./UsernameBadge"
 
 interface userProps {
     name: string,

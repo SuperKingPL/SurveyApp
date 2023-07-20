@@ -3,6 +3,7 @@ import '../styles/login.css'
 import { useRef } from 'react'
 import AuthService from '../services/AuthService';
 import Cookies from 'universal-cookie';
+import { socket } from '../scripts/socket';
 
 const Login = () => {
 
@@ -19,6 +20,7 @@ const Login = () => {
             expireDate.setTime(expireDate.getTime() + (20 * 60 * 1000 * 60))
             cookies.set("token", req.token, {path: '/', expires: expireDate})
             window.location.href = "/app";
+            socket.connect();
             // navigate("/app");
         }
     };

@@ -6,7 +6,6 @@ import { UserService } from "../services/UserService";
 
 export default (io: Socket) => {
     io.on("GET_SOCKET_GROUPS", async(res) => {
-        console.log(io.rooms);
         res(Array.from(io.rooms));
     })
     io.on("CREATE_GUILD", async (name, res) => {

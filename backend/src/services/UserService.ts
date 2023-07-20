@@ -18,6 +18,5 @@ export class UserService {
         await this.UserSocket?.join(`G-${guild._id}`);
         console.log(`Dołączyłem do serwera: ${guild._id}`)
         io.emit("UPDATE_GUILD_LIST");
-        console.log(this.UserSocket.rooms);
     }
 }

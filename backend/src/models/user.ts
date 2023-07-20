@@ -44,7 +44,7 @@ export const UserSchema = new Schema({
     guilds: {
         type: Array<String>,
         default: []
-    },
+    }
 });
 
 export const User = model<UserDocument>('user', UserSchema, "users")

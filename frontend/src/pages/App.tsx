@@ -1,18 +1,18 @@
 import '../styles/App.css';
 import '../styles/theme.css'
-import Message from '../components/message';
-import RoleGroup from '../components/rolegroup';
-import { Channel, channelType } from '../components/channel';
-import ServerBadge from '../components/serverBadge';
-import User from '../components/user';
-import TextInput from '../components/textInput';
-import SelfUserInfo from '../components/selfUserInfo';
-import ServerThumbnail from '../components/serverThumbnail';
+import Message from '../components/Message';
+import RoleGroup from '../components/RoleGroup';
+import { Channel, channelType } from '../components/Channel';
+import ServerBadge from '../components/ServerBadge';
+import User from '../components/User';
+import TextInput from '../components/TextInput';
+import SelfUserInfo from '../components/SelfUserInfo';
+import ServerThumbnail from '../components/ServerThumbnail';
 import { useEffect, useState } from 'react';
 import { socket } from '../scripts/socket';
 import { Self } from '../services/UserService';
 import Cookies from 'universal-cookie';
-import Modal from '../components/modal';
+import Modal from '../components/Modal';
 import MessageService from '../services/MessageService';
 import ChannelService, { IChannel } from '../services/ChannelService';
 import { DisplayDevInfo } from '../scripts/dev';
@@ -36,7 +36,6 @@ export default () => {
             var msg = [];
             for (var i = 0; i < res.length; i++) {
                 const id = res[i];
-                console.log(msg);
                 msg.push(id);
             }
             setMessages(msg);
@@ -69,12 +68,7 @@ export default () => {
 
         socket.on("SEND_MESSAGE", (data) => {
             new MessageService(data["id"]).Fetch().then((msg) => {
-                // TODO: setMessages(current => [...current, msg])
-                console.log("New message in my zone has been sent!");
-                console.log("Message ID: " + data["id"]);
-                console.log("Message guild: " + data["guild"]);
-                console.log("Message channel: " +  data["channel"]);
-                console.log("Message content: " + msg.content);
+                setMessages(current => [...current, msg])
             })
         });
         socket.on("UPDATE_GUILD_LIST", () => {

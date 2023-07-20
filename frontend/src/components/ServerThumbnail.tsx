@@ -1,9 +1,7 @@
 import SpaceDashboardRoundedIcon from '@mui/icons-material/SpaceDashboardRounded';
 import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded'
 import { useDispatch } from 'react-redux/es/exports';
-import Modal from './modal';
 import { closeModal, openModal } from '../store/modal';
-import { ModalState } from "../store/modal";
 import { GuildService } from '../services/GuildService';
 import Tooltip from '@mui/material/Tooltip/Tooltip';
 import { SetCurrentGuild } from '../store/CurrentGuild';

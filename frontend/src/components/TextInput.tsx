@@ -13,8 +13,6 @@ const TextInput = () => {
     useEffect(() => {
         textInput.current.onkeydown = async (event) => {
             if (event.key === "Enter") {
-                console.log(CurrentChannel.toString());
-                console.log(`Sending message...\nChannel: ${CurrentChannel.toString()}`)
                 new ChannelService(CurrentChannel.toString()).SendMessage(textInput.current.value);
                 textInput.current.value = "";
             }

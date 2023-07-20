@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import UsernameBadge from "./usernameBadge"
+import UsernameBadge from "./UsernameBadge"
 import UserService from "../services/UserService";
 import { format, isToday, isYesterday } from "date-fns";
 import { Tooltip, Zoom } from "@mui/material";

@@ -17,8 +17,6 @@ channelRoute.post("/:channelID/send", async (req, res) => {
     const channel = await Channel.findById(req.params.channelID);
     const author = getIDByToken(req.headers.authorization);
 
-    console.log(content)
-
     const msg = new Message({
         content: content,
         author: author,
@@ -38,7 +36,6 @@ channelRoute.post("/:channelID/send", async (req, res) => {
 });
 
 channelRoute.get("/:channelID/fetch", async (req, res) => {
-    console.log(await Channel.findById(req.params.channelID))
     res.json(await Channel.findById(req.params.channelID));
 });
 
