@@ -120,7 +120,7 @@
 }
 
 .roleGroup {
-    width: 85%;
+    width: 90%;
     padding: 10px;
     background: linear-gradient(90deg, rgba(84, 68, 78, 1) 0%, rgba(62, 65, 74, 1) 100%);
     border-radius: 5px;
@@ -279,7 +279,7 @@ button:hover:not(.disabled) {
 .userWrapperContainer {
     display: flex;
     align-items: center;
-    width: 85%;
+    width: 90%;
     padding: 10px;
     border-radius: 7px;
     -webkit-user-select: none;

@@ -13,16 +13,16 @@ import cors from "cors";
 const app: Express = express(); 
 const server = createServer(app);
 export const io = new Server(
-    app.listen(2115, "127.0.0.1",
-    () => { console.log("Server started on port 4000...") }),
-    {cors:
+    app.listen(2115, "127.0.0.1", () => { console.log("Server started on port 4000...") }),
+    {
+        cors:
         {
-            origin: '*',
+            origin: ['https://admin.socket.io', 'http://localhost:3000'],
             credentials: true
         }
     });
 
-instrument(io, {auth: false});
+instrument(io, {auth: false, mode: 'development'});
 
 io.on("connection", async (socket) => {
     console.log("Client has connected to Socket Server.");

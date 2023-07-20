@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ReactNode } from 'react'
-import { GuildService, IGuild } from "../services/GuildService";
 
 export interface CurrentChannelState {
     CurrentChannel: number,

@@ -16,9 +16,11 @@ import Modal from '../components/Modal';
 import MessageService from '../services/MessageService';
 import ChannelService, { IChannel } from '../services/ChannelService';
 import { DisplayDevInfo } from '../scripts/dev';
-import { useAppSelector } from '../scripts/hooks';
+import { useAppDispatch, useAppSelector } from '../scripts/hooks';
 import SettingsIcon from '@mui/icons-material/Settings';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import ContextMenu from '../components/ContextMenu';
+import { CloseContextMenu } from '../store/ContextMenu';
 
 export default () => {
 
@@ -29,6 +31,8 @@ export default () => {
     const [GuildChannels, setGuildChannels] = useState([]);
 
     const ActiveChannel: number = useAppSelector(state => state.CurrentChannel).CurrentChannel;
+
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         new ChannelService(ActiveChannel.toString()).GetMessages().then((res: []) => {
@@ -83,10 +87,21 @@ export default () => {
 
         DisplayDevInfo();
 
+
+        // Disable context menu
+
+        window.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+        });
+        // document.addEventListener('click', function(e) {
+        //     dispatch(CloseContextMenu());
+        // })
+
     }, [])
 
     return (
         <div className='appMount'>
+            <ContextMenu/>
             <Modal />
             <div className="ServersBar">
                 <ServerThumbnail isHome={true} />

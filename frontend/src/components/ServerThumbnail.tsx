@@ -6,6 +6,9 @@ import { GuildService } from '../services/GuildService';
 import Tooltip from '@mui/material/Tooltip/Tooltip';
 import { SetCurrentGuild } from '../store/CurrentGuild';
 import { useRef } from 'react';
+import ContextMenu from './ContextMenu';
+import { ShowContextMenu } from '../store/ContextMenu';
+import ContextMenuItem from './ContextMenuItem';
 
 interface GuildThumbnailProps {
     name?: string,
@@ -86,7 +89,15 @@ const ServerThumbnail = (props: GuildThumbnailProps) => {
     } else {
         return (
             <Tooltip title={props.name} placement='right'>
-                <div className="serverThumb" style={{backgroundImage: `url(${props.iconUrl})`}} onClick={() => new GuildService(props.id).Fetch().then((e) => dispatch(SetCurrentGuild(e)))}>
+                <div className="serverThumb" style={{backgroundImage: `url(${props.iconUrl})`}} onClick={() => new GuildService(props.id).Fetch().then((e) => dispatch(SetCurrentGuild(e)))} onContextMenu={(e) => {
+                    dispatch(ShowContextMenu({
+                        x: e.pageX,
+                        y: e.pageY,
+                        menuItems: [
+                            <ContextMenuItem name="Cześć" key={0}/>
+                        ]
+                    }))
+                }}>
                     <div className="activeServerThumb"></div>
                 </div>
             </Tooltip>
