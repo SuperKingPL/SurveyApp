@@ -19,6 +19,7 @@
     max-height: 300px;
     border-radius: 3px;
     background-color: var(--background1);
+    box-shadow: 8px 8px 12px -10px rgb(19, 19, 19);
 }
 .ContextMenu.shown {
     display: flex;
@@ -42,4 +43,7 @@
 .ContextMenu > .ContextMenuItem:hover {
     background-color: var(--primary);
     transition: background-color 0.1s;
+}
+.ContextMenu > .ContextMenuItem > .MuiSvgIcon-root {
+    margin-left: auto;
 }

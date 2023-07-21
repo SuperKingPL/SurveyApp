@@ -1,14 +1,14 @@
 import SpaceDashboardRoundedIcon from '@mui/icons-material/SpaceDashboardRounded';
 import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded'
 import { useDispatch } from 'react-redux/es/exports';
-import { closeModal, openModal } from '../store/modal';
+import { CloseModal, OpenModal } from '../store/modal';
 import { GuildService } from '../services/GuildService';
 import Tooltip from '@mui/material/Tooltip/Tooltip';
 import { SetCurrentGuild } from '../store/CurrentGuild';
 import { useRef } from 'react';
-import ContextMenu from './ContextMenu';
 import { ShowContextMenu } from '../store/ContextMenu';
 import ContextMenuItem from './ContextMenuItem';
+import {LogoutRounded} from '@mui/icons-material/';
 
 interface GuildThumbnailProps {
     name?: string,
@@ -31,8 +31,8 @@ const ServerThumbnail = (props: GuildThumbnailProps) => {
                 GuildService.CreateGuild(guildInputName.current.value);
             };
 
-            dispatch(closeModal());
-            dispatch(openModal(
+            dispatch(CloseModal());
+            dispatch(OpenModal(
                 <>
                     <h2>Stwórz nowy serwer</h2>
                     <p style={{fontSize: '15px'}}>Hej! Jak ma się nazywać twój serwer?</p>
@@ -43,14 +43,14 @@ const ServerThumbnail = (props: GuildThumbnailProps) => {
                 </>
             ));
         }
-        dispatch(openModal(
+        dispatch(OpenModal(
         <>
             <h2>Dołącz do serwera</h2>
             <p style={{fontSize: '15px'}}>Wprowadź zaproszenie poniżej, aby dołączyć do istniejącego serwera</p>
             <input placeholder="https://survey.app/G7YkgeVV"/>
             <div className="img" style={{width: "100%", height: "120px", backgroundSize: "cover", backgroundImage: "url('https://img.freepik.com/free-vector/cartoon-galaxy-background_23-2148984167.jpg')", backgroundPosition: "center", margin: "20px"}}/>
             <div className="actionBar">
-                <button onClick={() => {dispatch(closeModal())}}>Dołącz do serwera</button>
+                <button onClick={() => {dispatch(CloseModal())}}>Dołącz do serwera</button>
                 <button onClick={createServer}>Stwórz nowy serwer</button>
             </div>
             <h2></h2>
@@ -94,7 +94,9 @@ const ServerThumbnail = (props: GuildThumbnailProps) => {
                         x: e.pageX,
                         y: e.pageY,
                         menuItems: [
-                            <ContextMenuItem name="Cześć" key={0}/>
+                            <ContextMenuItem name="Opuść serwer" key={0} icon={<LogoutRounded/>} click={() => {
+                                console.log("HELLo");
+                            }}/>
                         ]
                     }))
                 }}>

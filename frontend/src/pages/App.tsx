@@ -93,10 +93,9 @@ export default () => {
         window.addEventListener("contextmenu", (e) => {
             e.preventDefault();
         });
-        // document.addEventListener('click', function(e) {
-        //     dispatch(CloseContextMenu());
-        // })
-
+        document.addEventListener('click', function(e) {
+            dispatch(CloseContextMenu());
+        });
     }, [])
 
     return (

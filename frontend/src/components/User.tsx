@@ -1,5 +1,6 @@
 import { useAppDispatch } from "../scripts/hooks"
 import { ShowContextMenu } from "../store/ContextMenu";
+import { OpenModal } from "../store/modal";
 import UsernameBadge from "./UsernameBadge"
 
 interface userProps {
@@ -12,16 +13,20 @@ const User = (props: userProps) => {
 
     const dispatch = useAppDispatch();
 
+    const showProfile = () => {
+        dispatch(OpenModal("siema"));
+    };
+
     return (
         <div className="userWrapperContainer" onContextMenu={(e) => {
             dispatch(ShowContextMenu({x: e.pageX, y: e.pageY}))
-        }}>
-            <div className="userAvatar" style={{width: 45, height: 45, minWidth: 45, maxWidth: 45, minHeight: 45, maxHeight: 45, backgroundImage: `url(${props.avatar})`}}></div>
+        }} onClick={showProfile}>
+            <div className="userAvatar" style={{width: 40, height: 40, minWidth: 40, maxWidth: 40, minHeight: 40, maxHeight: 40, backgroundImage: `url(${props.avatar})`}}></div>
                 <div className="userStatus">
             </div>
             <div className="userDetails">
                 <span className="username">{props.name} </span>
-                <span className="userCustomStatus">{props.customStatus}</span>
+                {/* <span className="userCustomStatus">{props.customStatus}</span> */}
                 {/* <UsernameBadge badge="BOT"/> */}
             </div>
         </div>

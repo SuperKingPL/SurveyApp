@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import '../styles/Modal.css'
 import { useAppDispatch, useAppSelector } from '../scripts/hooks';
-import { ModalState, closeModal } from '../store/modal';
+import { ModalState, CloseModal } from '../store/modal';
 import { store } from '../store/store';
 
 function sleep(ms) {
@@ -21,7 +21,7 @@ const Modal = () => {
         return (
             <div className="ModalContainer fadeIn">
                 <div className="Modal fadeIn">
-                    <i onClick={() => dispatch(closeModal())}><CloseRoundedIcon className='closeModalButton' fontSize='large' htmlColor='#adadad'/></i>
+                    <i onClick={() => dispatch(CloseModal())}><CloseRoundedIcon className='closeModalButton' fontSize='large' htmlColor='#adadad'/></i>
                     {modalContent}
                 </div>
             </div>

@@ -1,8 +1,6 @@
-import * as icons from '@mui/icons-material/'
-
 interface ContextMenuItemProps {
     name: string,
-    icon?: keyof typeof icons,
+    icon?: JSX.Element,
     click?: () => void
 }
 
