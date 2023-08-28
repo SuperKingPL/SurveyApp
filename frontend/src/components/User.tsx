@@ -14,7 +14,7 @@ const User = (props: userProps) => {
     const dispatch = useAppDispatch();
 
     const showProfile = () => {
-        dispatch(OpenModal("siema"));
+        dispatch(OpenModal("Showing profile"));
     };
 
     return (

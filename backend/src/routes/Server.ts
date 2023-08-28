@@ -16,7 +16,7 @@ serverRouter.use("/auth", authRoute)
 serverRouter.get("/", (req, res) => {
     res.json({
         version: 1,
-        status: "All system operational."
+        status: "All systems operational."
     })
 })
 

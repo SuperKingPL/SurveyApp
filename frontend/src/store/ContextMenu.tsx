@@ -29,6 +29,9 @@ const ContextMenuSlice = createSlice({
         },
         CloseContextMenu: (state) => {
             state.shown = false;
+        },
+        ContextMiddle: (state) => {
+            
         }
     }
 });
