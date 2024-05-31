@@ -1,8 +1,4 @@
-
-
-![Logo](https://cdn.discordapp.com/attachments/1023265697293406320/1131995319442362560/image_1.png)
-
-# Survey.app GitHub Repository
+# [DEPRECATED] Survey.app GitHub Repository
 
 Survey is a cross-platform social app. It allows users to create guilds that they can organize to create a great space to chat with friends or create a community.
 
